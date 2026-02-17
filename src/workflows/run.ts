@@ -31,6 +31,7 @@ import { getUniqueAgentId } from './context/index.js';
 import { runControllerView } from './controller/view.js';
 import { getAllInstalledImports } from '../shared/imports/index.js';
 import { registerImportedAgents, clearImportedAgents } from './utils/config.js';
+import { resolveWorkspaceRoot } from '../shared/utils/index.js';
 
 // Re-export from preflight for backward compatibility
 export { ValidationError, checkWorkflowCanStart, checkSpecificationRequired, checkOnboardingRequired, needsOnboarding } from './preflight.js';
@@ -43,7 +44,7 @@ export type { WorkflowStep, WorkflowTemplate };
 export async function runWorkflow(options: RunWorkflowOptions = {}): Promise<void> {
   const cwd = options.cwd ? path.resolve(options.cwd) : process.cwd();
 
-  // Ensure workspace structure exists (creates .codemachine folder tree)
+  // Ensure workspace structure exists
   await ensureWorkspaceStructure({ cwd });
 
   // Auto-register agents from all installed imports
@@ -56,7 +57,7 @@ export async function runWorkflow(options: RunWorkflowOptions = {}): Promise<voi
   debug('[Workflow] Registered agents from %d imported packages', importedPackages.length);
 
   // Load template
-  const cmRoot = path.join(cwd, '.codemachine');
+  const cmRoot = resolveWorkspaceRoot(cwd);
   const templatePath = options.templatePath || (await getTemplatePathFromTracking(cmRoot));
   const { template } = await loadTemplateWithPath(cwd, templatePath);
 
@@ -74,7 +75,7 @@ export async function runWorkflow(options: RunWorkflowOptions = {}): Promise<voi
   const rawLogLevel = (process.env.LOG_LEVEL || '').trim().toLowerCase();
   const debugFlag = (process.env.DEBUG || '').trim().toLowerCase();
   const debugEnabled = rawLogLevel === 'debug' || (debugFlag !== '' && debugFlag !== '0' && debugFlag !== 'false');
-  const debugLogPath = debugEnabled ? path.join(cwd, '.codemachine', 'logs', 'workflow-debug.log') : null;
+  const debugLogPath = debugEnabled ? path.join(cmRoot, 'logs', 'workflow-debug.log') : null;
   setDebugLogFile(debugLogPath);
 
   // Set up cleanup handlers
