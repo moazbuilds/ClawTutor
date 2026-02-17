@@ -199,23 +199,12 @@ export function Logo() {
         </Show>
           }
         >
-          <box flexDirection="row" gap={3} alignItems="flex-start" justifyContent="center">
-            <box flexDirection="column" gap={0}>
-              <For each={CODE_TEXT()}>
-                {(line) => <ColoredLine line={line} blockColor={() => themeCtx.theme.primary} borderColor={() => themeCtx.theme.purple} />}
-              </For>
-              <box height={1} />
-              <For each={MACHINE_TEXT}>
-                {(line) => <ColoredLine line={line} blockColor={() => themeCtx.theme.primary} borderColor={() => themeCtx.theme.purple} bold />}
-              </For>
-            </box>
-            <box flexDirection="column" gap={0}>
-              <For each={LOBSTER_ART}>
-                {(line) => (
-                  <text fg={themeCtx.theme.primary}>{line}</text>
-                )}
-              </For>
-            </box>
+          <box flexDirection="column" gap={0} alignItems="center">
+            <For each={LOBSTER_ART}>
+              {(line) => (
+                <text fg={themeCtx.theme.primary}>{line}</text>
+              )}
+            </For>
           </box>
         </Show>
       </Show>
