@@ -7,11 +7,6 @@ import type { BoxRenderable } from "@opentui/core"
 
 const SLASH_COMMANDS: SlashCommand[] = [
   { command: "start", description: "Start workflow with current template" },
-  { command: "templates", description: "Select and configure workflow templates" },
-  { command: "login", description: "Authenticate with AI providers" },
-  { command: "logout", description: "Sign out of AI providers" },
-  { command: "import", description: "Import external workflow packages" },
-  { command: "export", description: "Open imports folder in file explorer" },
   { command: "exit", description: "Exit the session" },
 ]
 
