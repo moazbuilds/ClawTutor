@@ -40,7 +40,7 @@ const mainPackage = JSON.parse(readFileSync(packageJsonPath, 'utf8'));
 const mainVersion = mainPackage.version;
 
 console.log(`\n${bold}${cyan}╭────────────────────────────────────────╮${reset}`);
-console.log(`${bold}${cyan}│${reset}  Building ${bold}CodeMachine${reset} v${mainVersion}  ${bold}${cyan}│${reset}`);
+console.log(`${bold}${cyan}│${reset}  Building ${bold}ClawTutor${reset} v${mainVersion}  ${bold}${cyan}│${reset}`);
 console.log(`${bold}${cyan}╰────────────────────────────────────────╯${reset}\n`);
 
 // Clean cached resources for this version to ensure fresh extraction on next run
