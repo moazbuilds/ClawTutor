@@ -8,11 +8,7 @@ import { isEngineModule } from './base.js';
 // Import all engines at compile time
 import codexEngine from '../providers/codex/index.js';
 import claudeEngine from '../providers/claude/index.js';
-import cursorEngine from '../providers/cursor/index.js';
-import ccrEngine from '../providers/ccr/index.js';
 import opencodeEngine from '../providers/opencode/index.js';
-import auggieEngine from '../providers/auggie/index.js';
-import mistralEngine from '../providers/mistral/index.js';
 
 /**
  * Engine Registry - Singleton that manages all available engines
@@ -36,10 +32,6 @@ class EngineRegistry {
       opencodeEngine,
       claudeEngine,
       codexEngine,
-      cursorEngine,
-      mistralEngine,
-      auggieEngine,
-      ccrEngine,
       // Add new engines here
     ];
 
