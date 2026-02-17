@@ -26,6 +26,7 @@ import { createRequire } from "node:module"
 import { resolvePackageJson } from "../../shared/runtime/root.js"
 import { setSelectedTrack, setSelectedConditions, setProjectName } from "../../shared/workflows/index.js"
 import { checkOnboardingRequired, needsOnboarding } from "../../workflows/preflight.js"
+import { WORKSPACE_DIRNAME, resolveWorkspaceRoot } from "../../shared/utils/index.js"
 import type { TracksConfig, ConditionGroup } from "../../workflows/templates/types"
 import type { InitialToast } from "./app"
 
@@ -152,7 +153,7 @@ export function App(props: { initialToast?: InitialToast }) {
   const handleStartWorkflow = async () => {
     appDebug('[AppShell] handleStartWorkflow called')
     const cwd = process.env.CODEMACHINE_CWD || process.cwd()
-    const cmRoot = path.join(cwd, '.codemachine')
+    const cmRoot = resolveWorkspaceRoot(cwd)
     appDebug('[AppShell] cwd=%s, cmRoot=%s', cwd, cmRoot)
 
     // Initialize debug log file early (before onboarding) so all logs are captured
@@ -160,7 +161,7 @@ export function App(props: { initialToast?: InitialToast }) {
     const debugFlag = (process.env.DEBUG || '').trim().toLowerCase()
     const debugEnabled = rawLogLevel === 'debug' || (debugFlag !== '' && debugFlag !== '0' && debugFlag !== 'false')
     if (debugEnabled) {
-      const debugLogPath = path.join(cwd, '.codemachine', 'logs', 'workflow-debug.log')
+      const debugLogPath = path.join(cmRoot, 'logs', 'workflow-debug.log')
       appDebug('[AppShell] Switching to workflow debug log: %s', debugLogPath)
       setDebugLogFile(debugLogPath)
     }
@@ -228,7 +229,7 @@ export function App(props: { initialToast?: InitialToast }) {
     globalThis.__workflowEventBus = eventBus
 
     const cwd = process.env.CODEMACHINE_CWD || process.cwd()
-    const specPath = path.join(cwd, '.codemachine', 'inputs', 'specifications.md')
+    const specPath = path.join(cwd, WORKSPACE_DIRNAME, 'inputs', 'specifications.md')
     appDebug('[AppShell] specPath=%s', specPath)
 
     pendingWorkflowStart = () => {
@@ -250,7 +251,7 @@ export function App(props: { initialToast?: InitialToast }) {
 
   const handleOnboardComplete = async (result: { projectName?: string; trackId?: string; conditions?: string[] }) => {
     const cwd = process.env.CODEMACHINE_CWD || process.cwd()
-    const cmRoot = path.join(cwd, '.codemachine')
+    const cmRoot = resolveWorkspaceRoot(cwd)
 
     // Save project name if provided
     if (result.projectName) {
