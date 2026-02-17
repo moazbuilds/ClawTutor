@@ -7,7 +7,7 @@
 import { createSignal, type Accessor } from "solid-js"
 import { setAutonomousMode as persistAutonomousMode, loadControllerConfig } from "../../../../../workflows/controller/config.js"
 import { debug } from "../../../../../shared/logging/logger.js"
-import path from "path"
+import { resolveWorkspaceRoot } from "../../../../../shared/utils/index.js"
 import type { UIActions, AutonomousMode } from "../context/ui-state/types"
 
 /** Expand ~ to home directory if present */
@@ -119,7 +119,7 @@ export function useWorkflowHandlers(options: UseWorkflowHandlersOptions): UseWor
 
   // Toggle autonomous mode
   const toggleAutonomousMode = async () => {
-    const cmRoot = path.join(resolvePath(currentDir), '.codemachine')
+    const cmRoot = resolveWorkspaceRoot(resolvePath(currentDir))
 
     const controllerState = await loadControllerConfig(cmRoot)
     debug('[TOGGLE] controllerState: %s', JSON.stringify(controllerState))
