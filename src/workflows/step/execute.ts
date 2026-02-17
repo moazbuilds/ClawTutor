@@ -16,6 +16,7 @@ import type { WorkflowEventEmitter } from '../events/emitter.js';
 import { debug } from '../../shared/logging/logger.js';
 import { resolvePromptPath } from '../../shared/imports/index.js';
 import { resolvePackageRoot } from '../../shared/runtime/root.js';
+import { resolveWorkspaceRoot } from '../../shared/utils/index.js';
 
 const packageRoot = resolvePackageRoot(import.meta.url, 'step executor');
 
@@ -57,8 +58,9 @@ export interface StepExecutorOptions {
 }
 
 async function ensureProjectScaffold(cwd: string): Promise<void> {
-  const agentsDir = path.resolve(cwd, '.codemachine', 'agents');
-  const planDir = path.resolve(cwd, '.codemachine', 'plan');
+  const workspaceRoot = resolveWorkspaceRoot(cwd);
+  const agentsDir = path.join(workspaceRoot, 'agents');
+  const planDir = path.join(workspaceRoot, 'plan');
   await mkdir(agentsDir, { recursive: true });
   await mkdir(planDir, { recursive: true });
 }
