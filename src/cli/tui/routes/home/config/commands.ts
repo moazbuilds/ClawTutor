@@ -7,6 +7,7 @@
 import { createRequire } from "node:module"
 import * as path from "node:path"
 import { resolvePackageJson } from "../../../../../shared/runtime/root.js"
+import { WORKSPACE_DIRNAME } from "../../../../../shared/utils/index.js"
 
 /**
  * Get the application version from package.json
@@ -24,7 +25,7 @@ export function getVersion(): string {
  */
 export function getSpecPath(): string {
   const cwd = process.env.CODEMACHINE_CWD || process.cwd()
-  const fullPath = path.join(cwd, ".codemachine", "inputs", "specifications.md")
+  const fullPath = path.join(cwd, WORKSPACE_DIRNAME, "inputs", "specifications.md")
   const relativePath = path.relative(process.cwd(), fullPath)
   return relativePath.startsWith("..") ? fullPath : relativePath
 }
@@ -34,7 +35,7 @@ export function getSpecPath(): string {
  */
 export function getAbsoluteSpecPath(): string {
   const cwd = process.env.CODEMACHINE_CWD || process.cwd()
-  return path.join(cwd, ".codemachine", "inputs", "specifications.md")
+  return path.join(cwd, WORKSPACE_DIRNAME, "inputs", "specifications.md")
 }
 
 /**
