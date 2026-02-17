@@ -3,13 +3,14 @@ import '../shared/runtime/suppress-baseline-warning.js';
 // EARLY LOGGING SETUP - Initialize before anything else
 import * as path from 'node:path';
 import { setAppLogFile, appDebug } from '../shared/logging/logger.js';
+import { resolveWorkspaceRoot, WORKSPACE_DIRNAME } from '../shared/utils/index.js';
 
 const earlyCwd = process.env.CODEMACHINE_CWD || process.cwd();
 const earlyLogLevel = (process.env.LOG_LEVEL || '').trim().toLowerCase();
 const earlyDebugFlag = (process.env.DEBUG || '').trim().toLowerCase();
 const earlyDebugEnabled = earlyLogLevel === 'debug' || (earlyDebugFlag !== '' && earlyDebugFlag !== '0' && earlyDebugFlag !== 'false');
 if (earlyDebugEnabled) {
-  const appDebugLogPath = path.join(earlyCwd, '.codemachine', 'logs', 'app-debug.log');
+  const appDebugLogPath = path.join(resolveWorkspaceRoot(earlyCwd), 'logs', 'app-debug.log');
   setAppLogFile(appDebugLogPath);
 }
 appDebug('[Boot] CLI module loading started');
@@ -109,12 +110,12 @@ import { fileURLToPath } from 'node:url';
 import { homedir } from 'node:os';
 appDebug('[Boot] Imports complete');
 
-const DEFAULT_SPEC_PATH = '.codemachine/inputs/specifications.md';
+const DEFAULT_SPEC_PATH = `${WORKSPACE_DIRNAME}/inputs/specifications.md`;
 
 /**
  * Background initialization - runs AFTER TUI is visible
  * Loads heavy modules and performs I/O operations while user reads UI
- * Note: .codemachine folder initialization is handled by workflow run, not here
+ * Note: workspace folder initialization is handled by workflow run, not here
  */
 async function initializeInBackground(cwd: string): Promise<void> {
   // Check for updates (writes to ~/.codemachine/resources/updates.json)
@@ -122,9 +123,9 @@ async function initializeInBackground(cwd: string): Promise<void> {
   const { check } = await import('../shared/updates/index.js');
   check().catch(err => appDebug('[Init] Update check error: %s', err));
 
-  const cmRoot = path.join(cwd, '.codemachine');
+  const cmRoot = resolveWorkspaceRoot(cwd);
 
-  // Only bootstrap if .codemachine doesn't exist
+  // Only bootstrap if workspace doesn't exist
   if (!existsSync(cmRoot)) {
     appDebug('[Init] Bootstrapping workspace (first run)');
     // Lazy load bootstrap utilities (only on first run)
