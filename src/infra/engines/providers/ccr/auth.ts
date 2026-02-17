@@ -31,7 +31,7 @@ export function resolveCcrConfigDir(options?: CcrAuthOptions): string {
   }
 
   // Authentication is shared globally
-  return path.join(homedir(), '.codemachine', 'ccr');
+  return path.join(homedir(), '.clawtutor', 'ccr');
 }
 
 /**

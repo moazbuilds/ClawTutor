@@ -11,7 +11,7 @@
  * Usage:
  *   node workflow-signals/index.js
  *
- * Signals are stored globally at ~/.codemachine/mcp/workflow-signals/
+ * Signals are stored globally at ~/.clawtutor/mcp/workflow-signals/
  */
 
 import { Server } from '@modelcontextprotocol/sdk/server/index.js';
@@ -26,7 +26,7 @@ import * as fs from 'fs/promises';
 import { initDebugLogging, debug } from '../../../../shared/logging/logger.js';
 import { workflowSignalTools } from './tools.js';
 
-// Initialize debug logging if LOG_LEVEL=debug (writes to ~/.codemachine/logs/debug.log)
+// Initialize debug logging if LOG_LEVEL=debug (writes to ~/.clawtutor/logs/debug.log)
 initDebugLogging();
 import {
   ProposeStepCompletionSchema,

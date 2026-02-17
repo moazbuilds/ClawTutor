@@ -18,7 +18,7 @@ export interface TelemetryData {
  * This function is kept for backwards compatibility but does nothing
  */
 export function logTelemetry(_data: TelemetryData): void {
-  // Telemetry data is captured and stored in .codemachine/logs/registry.json
+  // Telemetry data is captured and stored in .clawtutor/logs/registry.json
   // No need for a separate telemetry.log file
   if (process.env.LOG_LEVEL === 'debug') {
     console.error('[DEBUG] logTelemetry called (no-op - telemetry stored in registry.json)');

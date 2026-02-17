@@ -226,7 +226,7 @@ export async function runCodex(options: RunCodexOptions): Promise<RunCodexResult
 
   // Prefer calling the real Codex CLI directly, mirroring runner-prompts spec
   // Example (Linux/Mac):
-  //   CODEX_HOME="$HOME/.codemachine/codex" codex exec \
+  //   CODEX_HOME="$HOME/.clawtutor/codex" codex exec \
   //     --skip-git-repo-check \
   //     --sandbox danger-full-access --dangerously-bypass-approvals-and-sandbox \
   //     -C <workingDir> "<composite prompt>"
@@ -234,7 +234,7 @@ export async function runCodex(options: RunCodexOptions): Promise<RunCodexResult
   // Expand platform-specific home directory variables in CODEX_HOME
   const codexHome = process.env[ENV.CODEX_HOME]
     ? expandHomeDir(process.env[ENV.CODEX_HOME]!)
-    : path.join(homedir(), '.codemachine', 'codex');
+    : path.join(homedir(), '.clawtutor', 'codex');
   const mergedEnv = { ...process.env, ...(env ?? {}), CODEX_HOME: codexHome };
 
   // Force pipe mode to ensure text normalization is applied

@@ -31,7 +31,7 @@ export interface CCRSettings {
  *
  * CCR reads MCP configuration from:
  * - Project scope: .mcp.json in project directory
- * - User scope: .ccr.json in CCR_HOME (defaults to ~/.codemachine/ccr)
+ * - User scope: .ccr.json in CCR_HOME (defaults to ~/.clawtutor/ccr)
  *
  * @param scope - 'project' for .mcp.json, 'user' for .ccr.json
  * @param projectDir - Project directory (required for 'project' scope)
@@ -45,7 +45,7 @@ export function getSettingsPath(scope: ConfigScope, projectDir?: string): string
   }
   // User scope: CCR reads from .ccr.json in CCR_HOME
   const envHome = process.env[ENV.CCR_HOME];
-  const ccrConfigDir = envHome ?? path.join(homedir(), '.codemachine', 'ccr');
+  const ccrConfigDir = envHome ?? path.join(homedir(), '.clawtutor', 'ccr');
   return path.join(ccrConfigDir, '.ccr.json');
 }
 

@@ -22,7 +22,7 @@ import {
 import { initDebugLogging, debug } from '../../../../shared/logging/logger.js';
 import { agentCoordinationTools } from './tools.js';
 
-// Initialize debug logging if LOG_LEVEL=debug (writes to ~/.codemachine/logs/debug.log)
+// Initialize debug logging if LOG_LEVEL=debug (writes to ~/.clawtutor/logs/debug.log)
 initDebugLogging();
 import { RunAgentsSchema, GetAgentStatusSchema, ListAvailableAgentsSchema } from './schemas.js';
 import type { ExecutionResult } from './schemas.js';

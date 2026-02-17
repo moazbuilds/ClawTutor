@@ -14,7 +14,7 @@ import { appDebug } from "../../../shared/logging/logger.js"
 export async function getSavedTheme(): Promise<"dark" | "light" | null> {
   appDebug('[ThemeStorage] getSavedTheme called')
   try {
-    const kvPath = path.join(homedir(), ".codemachine", "state", "kv.json")
+    const kvPath = path.join(homedir(), ".clawtutor", "state", "kv.json")
     appDebug('[ThemeStorage] kvPath=%s', kvPath)
     const file = Bun.file(kvPath)
 

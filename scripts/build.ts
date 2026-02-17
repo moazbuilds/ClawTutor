@@ -44,7 +44,7 @@ console.log(`${bold}${cyan}│${reset}  Building ${bold}CodeMachine${reset} v${m
 console.log(`${bold}${cyan}╰────────────────────────────────────────╯${reset}\n`);
 
 // Clean cached resources for this version to ensure fresh extraction on next run
-const cachedResourcesDir = join(homedir(), '.codemachine', 'resources', mainVersion);
+const cachedResourcesDir = join(homedir(), '.clawtutor', 'resources', mainVersion);
 if (existsSync(cachedResourcesDir)) {
   rmSync(cachedResourcesDir, { recursive: true, force: true });
   console.log(`${green}✓${reset} ${dim}Cleaned cached resources at ${cachedResourcesDir}${reset}`);

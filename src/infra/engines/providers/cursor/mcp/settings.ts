@@ -20,13 +20,13 @@ import { getRouterConfig, ROUTER_ID } from '../../../../mcp/router/config.js';
 
 /**
  * Resolve CURSOR_HOME directory
- * Uses CODEMACHINE_CURSOR_HOME env var or defaults to ~/.codemachine/cursor
+ * Uses CODEMACHINE_CURSOR_HOME env var or defaults to ~/.clawtutor/cursor
  */
 export function resolveCursorHome(): string {
   if (process.env[ENV.CURSOR_HOME]) {
     return expandHomeDir(process.env[ENV.CURSOR_HOME]!);
   }
-  return path.join(homedir(), '.codemachine', 'cursor');
+  return path.join(homedir(), '.clawtutor', 'cursor');
 }
 
 /**

@@ -87,7 +87,7 @@ export function setDebugLogFile(filePath: string | null): void {
  */
 export function getGlobalDebugLogPath(): string {
   const home = process.env.HOME || process.env.USERPROFILE || '/tmp';
-  return path.join(home, '.codemachine', 'logs', 'debug.log');
+  return path.join(home, '.clawtutor', 'logs', 'debug.log');
 }
 
 /**

@@ -109,7 +109,7 @@ export function loadBuiltinBackends(): InProcessBackendConfig[] {
  *
  * Looks for servers in:
  * - ~/.config/codemachine/mcp-servers.json (user global)
- * - .codemachine/mcp-servers.json (project local)
+ * - .clawtutor/mcp-servers.json (project local)
  *
  * Format:
  * {
@@ -129,7 +129,7 @@ async function loadUserBackends(workingDir: string): Promise<BackendServerConfig
   const userConfigPath = path.join(homedir(), '.config', 'codemachine', 'mcp-servers.json');
 
   // Project local config
-  const projectConfigPath = path.join(workingDir, '.codemachine', 'mcp-servers.json');
+  const projectConfigPath = path.join(workingDir, '.clawtutor', 'mcp-servers.json');
 
   for (const configPath of [userConfigPath, projectConfigPath]) {
     try {

@@ -17,7 +17,7 @@ export interface MistralConfig {
 
   /**
    * Optional custom Mistral config directory
-   * Defaults to ~/.codemachine/mistral
+   * Defaults to ~/.clawtutor/mistral
    */
   mistralConfigDir?: string;
 }

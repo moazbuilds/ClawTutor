@@ -29,7 +29,7 @@ function slugify(value: string): string {
  */
 function getDefaultPromptPath(agentId: string): string {
   const slugBase = slugify(agentId) || 'agent';
-  return path.join('.codemachine', 'agents', `${slugBase}.md`);
+  return path.join('.clawtutor', 'agents', `${slugBase}.md`);
 }
 
 /**

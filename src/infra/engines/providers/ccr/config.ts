@@ -15,7 +15,7 @@ export interface CCRConfig {
 
   /**
    * Optional custom CCR config directory
-   * Defaults to ~/.codemachine/ccr
+   * Defaults to ~/.clawtutor/ccr
    */
   ccrConfigDir?: string;
 }

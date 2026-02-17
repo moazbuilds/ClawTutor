@@ -4,7 +4,7 @@
  * File-based IPC for communicating between MCP server and workflow engine.
  * Signals are written as JSON files that the workflow controller watches.
  *
- * Uses project-level storage (.codemachine/mcp/signals/) so multiple
+ * Uses project-level storage (.clawtutor/mcp/signals/) so multiple
  * projects can run simultaneously without conflicts.
  */
 
@@ -20,7 +20,7 @@ export class SignalQueue {
   constructor(workflowDir?: string) {
     // Use project-level signals directory
     const projectDir = workflowDir || process.cwd();
-    this.signalDir = path.join(projectDir, '.codemachine', 'mcp', 'signals');
+    this.signalDir = path.join(projectDir, '.clawtutor', 'mcp', 'signals');
   }
 
   /**

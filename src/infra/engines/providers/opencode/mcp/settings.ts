@@ -40,7 +40,7 @@ export interface OpenCodeSettings {
 /**
  * Get OpenCode config file path
  *
- * @param scope - 'project' for opencode.json, 'user' for ~/.codemachine/opencode/.../opencode.json
+ * @param scope - 'project' for opencode.json, 'user' for ~/.clawtutor/opencode/.../opencode.json
  * @param projectDir - Project directory (required for 'project' scope)
  */
 export function getSettingsPath(scope: ConfigScope, projectDir?: string): string {

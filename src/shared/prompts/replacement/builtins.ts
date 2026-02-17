@@ -9,7 +9,7 @@ import * as os from 'node:os';
 import * as path from 'node:path';
 import { debug } from '../../logging/logger.js';
 
-const CM_FOLDER = '.codemachine';
+const CM_FOLDER = '.clawtutor';
 const TEMPLATE_FILE = 'template.json';
 
 // Static placeholders (no context needed)

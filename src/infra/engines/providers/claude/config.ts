@@ -17,7 +17,7 @@ export interface ClaudeConfig {
 
   /**
    * Optional custom Claude config directory
-   * Defaults to ~/.codemachine/claude
+   * Defaults to ~/.clawtutor/claude
    */
   claudeConfigDir?: string;
 }

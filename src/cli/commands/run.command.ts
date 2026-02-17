@@ -99,7 +99,7 @@ async function registerEngineRunCommands(program: Command): Promise<void> {
  * codemachine run "code-generator 'Build login feature'"
  *
  * Single agent (enhanced with input files):
- * codemachine run "system-analyst[input:.codemachine/agents/system-analyst.md,tail:100] 'analyze architecture'"
+ * codemachine run "system-analyst[input:.clawtutor/agents/system-analyst.md,tail:100] 'analyze architecture'"
  *
  * Single agent (multiple inputs, no prompt):
  * codemachine run "arch-writer[input:file1.md;file2.md;file3.md]"

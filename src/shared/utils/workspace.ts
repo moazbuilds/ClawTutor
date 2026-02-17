@@ -2,7 +2,7 @@ import { existsSync } from 'node:fs';
 import * as path from 'node:path';
 
 export const WORKSPACE_DIRNAME = '.clawtutor';
-export const LEGACY_WORKSPACE_DIRNAME = '.codemachine';
+export const LEGACY_WORKSPACE_DIRNAME = '.clawtutor';
 
 /**
  * Resolve the project workspace root.

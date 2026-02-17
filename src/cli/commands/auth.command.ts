@@ -65,7 +65,7 @@ export async function handleLogin(providerId: string): Promise<void> {
       // Build XDG environment variables pointing to OPENCODE_HOME
       const opencodeHome = process.env.OPENCODE_HOME
         ? expandHomeDir(process.env.OPENCODE_HOME)
-        : path.join(homedir(), '.codemachine', 'opencode');
+        : path.join(homedir(), '.clawtutor', 'opencode');
 
       const xdgEnv = {
         ...process.env,

@@ -180,7 +180,7 @@ export interface ExecuteAgentOptions {
  * This loads agent configuration from:
  * - config/sub.agents.js
  * - config/main.agents.js
- * - .codemachine/agents/agents-config.json
+ * - .clawtutor/agents/agents-config.json
  *
  * Used by:
  * - Orchestration executor (src/agents/orchestration/executor.ts)

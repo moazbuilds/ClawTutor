@@ -10,7 +10,7 @@ export const { use: useKV, provider: KVProvider } = createSimpleContext({
   init: () => {
     const [ready, setReady] = createSignal(false)
     const [kvStore, setKvStore] = createStore<Record<string, unknown>>({})
-    const statePath = path.join(homedir(), ".codemachine", "state")
+    const statePath = path.join(homedir(), ".clawtutor", "state")
     const file = Bun.file(path.join(statePath, "kv.json"))
 
     // Ensure state directory exists

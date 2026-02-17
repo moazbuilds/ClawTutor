@@ -16,7 +16,7 @@ export interface CursorConfig {
 
   /**
    * Optional custom Cursor config directory
-   * Defaults to ~/.codemachine/cursor
+   * Defaults to ~/.clawtutor/cursor
    */
   cursorConfigDir?: string;
 }

@@ -10,7 +10,7 @@ function debug(message: string, ...args: unknown[]) {
   appDebug(`[UpdateChecker] ${message}`, ...args)
 }
 
-const CACHE_DIR = join(homedir(), ".codemachine", "resources")
+const CACHE_DIR = join(homedir(), ".clawtutor", "resources")
 const CACHE_PATH = join(CACHE_DIR, "updates.json")
 const CHECK_INTERVAL = 1000 * 60 * 60 * 24 // 24 hours
 

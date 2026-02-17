@@ -43,7 +43,7 @@ export async function exportAgents(): Promise<void> {
     agents: agentsMap,
   };
 
-  const outputPath = '.codemachine/logs/registry-export.json';
+  const outputPath = '.clawtutor/logs/registry-export.json';
   writeFileSync(outputPath, JSON.stringify(exportData, null, 2), 'utf-8');
 
   console.log(outputPath);

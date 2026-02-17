@@ -29,7 +29,7 @@ export function resolveMistralConfigDir(options?: MistralAuthOptions): string {
     return expandHomeDir(process.env[ENV.MISTRAL_HOME]!);
   }
 
-  return path.join(homedir(), '.codemachine', 'mistral');
+  return path.join(homedir(), '.clawtutor', 'mistral');
 }
 
 function resolveVibeHome(options?: MistralAuthOptions): string {
@@ -40,7 +40,7 @@ function resolveVibeHome(options?: MistralAuthOptions): string {
     return expandHomeDir(process.env[ENV.MISTRAL_HOME]!);
   }
   // default under codemachine
-  return path.join(homedir(), '.codemachine', 'vibe');
+  return path.join(homedir(), '.clawtutor', 'vibe');
 }
 
 /**
@@ -48,7 +48,7 @@ function resolveVibeHome(options?: MistralAuthOptions): string {
  * Mistral Vibe stores it at ~/.vibe/.env
  */
 export function getCredentialsPath(configDir: string): string {
-  // Use VIBE_HOME override or fallback to ~/.codemachine/vibe/.env
+  // Use VIBE_HOME override or fallback to ~/.clawtutor/vibe/.env
   const vibeDir = resolveVibeHome({ mistralConfigDir: configDir });
   return path.join(vibeDir, '.env');
 }

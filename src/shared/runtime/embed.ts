@@ -20,7 +20,7 @@ type EmbeddedMetadata = {
 function getResourcesBaseDir(): string {
   const override = process.env.CODEMACHINE_RESOURCES_DIR;
   if (override && override.length > 0) return override;
-  return join(os.homedir(), '.codemachine', 'resources');
+  return join(os.homedir(), '.clawtutor', 'resources');
 }
 
 function setEnvVars(targetDir: string, force = false): void {
@@ -43,7 +43,7 @@ function setEnvVars(targetDir: string, force = false): void {
  * Ensures embedded resources are extracted for compiled binaries.
  *
  * - Dev mode (`bun run dev`): Returns undefined immediately (reads repo directly)
- * - Compiled binary: Extracts files to ~/.codemachine/resources/<version>/
+ * - Compiled binary: Extracts files to ~/.clawtutor/resources/<version>/
  *
  * Returns the package root directory if resources are installed, or undefined in dev mode.
  */

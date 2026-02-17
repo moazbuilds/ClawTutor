@@ -50,7 +50,7 @@ export interface InstalledImport {
 }
 
 /**
- * Registry file structure (~/.codemachine/imports/registry.json)
+ * Registry file structure (~/.clawtutor/imports/registry.json)
  */
 export interface ImportRegistry {
   /** Schema version for future migrations */

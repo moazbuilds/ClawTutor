@@ -31,7 +31,7 @@ export function resolveClaudeConfigDir(options?: ClaudeAuthOptions): string {
   }
 
   // Authentication is shared globally
-  return path.join(homedir(), '.codemachine', 'claude');
+  return path.join(homedir(), '.clawtutor', 'claude');
 }
 
 /**

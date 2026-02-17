@@ -7,7 +7,7 @@ export interface LoopModuleBehavior {
   type: 'loop';
   action: 'stepBack';
   steps: number;
-  trigger?: string; // Optional: now controlled via .codemachine/memory/directive.json
+  trigger?: string; // Optional: now controlled via .clawtutor/memory/directive.json
   maxIterations?: number;
   skip?: string[];
 }

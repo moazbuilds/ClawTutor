@@ -22,7 +22,7 @@ export { ROUTER_ID };
 /**
  * Get Codex config file path
  *
- * @param scope - 'project' for .codex/config.toml, 'user' for ~/.codemachine/codex/config.toml
+ * @param scope - 'project' for .codex/config.toml, 'user' for ~/.clawtutor/codex/config.toml
  * @param projectDir - Project directory (required for 'project' scope)
  */
 export function getSettingsPath(scope: ConfigScope, projectDir?: string): string {
@@ -32,7 +32,7 @@ export function getSettingsPath(scope: ConfigScope, projectDir?: string): string
     }
     return path.join(projectDir, '.codex', 'config.toml');
   }
-  return path.join(homedir(), '.codemachine', 'codex', 'config.toml');
+  return path.join(homedir(), '.clawtutor', 'codex', 'config.toml');
 }
 
 // ============================================================================

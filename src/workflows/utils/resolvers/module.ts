@@ -9,7 +9,7 @@ function resolveLoopBehavior(
     return undefined;
   }
 
-  // Trigger is now optional - controlled via .codemachine/memory/directive.json
+  // Trigger is now optional - controlled via .clawtutor/memory/directive.json
   const trigger = typeof base.trigger === 'string' ? base.trigger : undefined;
 
   const overrideSteps = typeof overrides.loopSteps === 'number' ? overrides.loopSteps : undefined;

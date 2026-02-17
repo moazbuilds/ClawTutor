@@ -39,7 +39,7 @@ function resolveRunnerEnv(env?: NodeJS.ProcessEnv): NodeJS.ProcessEnv {
   const runnerEnv: NodeJS.ProcessEnv = { ...process.env, ...(env ?? {}) };
 
   // Set all three XDG environment variables to subdirectories under OPENCODE_HOME
-  // This centralizes all OpenCode data under ~/.codemachine/opencode by default
+  // This centralizes all OpenCode data under ~/.clawtutor/opencode by default
   const opencodeHome = resolveOpenCodeHome(runnerEnv[ENV.OPENCODE_HOME]);
 
   if (shouldApplyDefault('XDG_CONFIG_HOME', env)) {

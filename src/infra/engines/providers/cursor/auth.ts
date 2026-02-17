@@ -33,7 +33,7 @@ export function resolveCursorConfigDir(options?: CursorAuthOptions): string {
   }
 
   // Authentication is shared globally
-  return path.join(homedir(), '.codemachine', 'cursor');
+  return path.join(homedir(), '.clawtutor', 'cursor');
 }
 
 /**

@@ -311,7 +311,7 @@ export class AgentMonitorService {
    */
   private getDefaultLogPath(id: number, name: string, startTime: string): string {
     const timestamp = new Date(startTime).toISOString().replace(/:/g, '-').replace(/\..+/, '');
-    return `.codemachine/logs/agent-${id}-${name}-${timestamp}.log`;
+    return `.clawtutor/logs/agent-${id}-${name}-${timestamp}.log`;
   }
 }
 

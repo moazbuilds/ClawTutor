@@ -23,13 +23,13 @@ export { ROUTER_ID };
 
 /**
  * Resolve VIBE_HOME directory
- * Uses CODEMACHINE_MISTRAL_HOME env var or defaults to ~/.codemachine/vibe
+ * Uses CODEMACHINE_MISTRAL_HOME env var or defaults to ~/.clawtutor/vibe
  */
 export function resolveVibeHome(): string {
   if (process.env[ENV.MISTRAL_HOME]) {
     return expandHomeDir(process.env[ENV.MISTRAL_HOME]!);
   }
-  return path.join(homedir(), '.codemachine', 'vibe');
+  return path.join(homedir(), '.clawtutor', 'vibe');
 }
 
 /**

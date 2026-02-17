@@ -20,7 +20,7 @@ function resolveDesiredCwd(explicitCwd?: string): string {
 }
 
 /**
- * Ensures workspace folder structure under `.clawtutor/` (or legacy `.codemachine/`).
+ * Ensures workspace folder structure under `.clawtutor/` (or legacy `.clawtutor/`).
  * Does NOT load or mirror any agents - that's handled separately by mirrorSubAgents.
  * Idempotent and safe to run repeatedly.
  */

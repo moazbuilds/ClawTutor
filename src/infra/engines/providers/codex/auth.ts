@@ -19,7 +19,7 @@ import { ENV } from './config.js';
  * Resolves the Codex home directory
  */
 async function resolveCodexHome(codexHome?: string): Promise<string> {
-  const rawPath = codexHome ?? process.env[ENV.CODEX_HOME] ?? path.join(homedir(), '.codemachine', 'codex');
+  const rawPath = codexHome ?? process.env[ENV.CODEX_HOME] ?? path.join(homedir(), '.clawtutor', 'codex');
   const targetHome = expandHomeDir(rawPath);
   await ensureAuthDirectory(targetHome);
   return targetHome;

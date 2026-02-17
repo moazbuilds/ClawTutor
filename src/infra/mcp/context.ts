@@ -6,7 +6,7 @@
  *
  * Flow:
  *   1. Step execution merges agent + step MCP configs
- *   2. Context is written to ./.codemachine/mcp/context.json (project-level)
+ *   2. Context is written to ./.clawtutor/mcp/context.json (project-level)
  *   3. MCP router reads context to filter available tools
  *
  * Uses project-level location so multiple projects can run simultaneously.
@@ -19,12 +19,12 @@ import type { MCPConfig, MCPServerFilterConfig, MCPContextFile } from './types.j
 
 /**
  * Get the project-level MCP context file path.
- * Uses .codemachine/mcp/context.json relative to cwd so multiple
+ * Uses .clawtutor/mcp/context.json relative to cwd so multiple
  * projects can run simultaneously without conflicts.
  */
 function getContextPath(cwd?: string): string {
   const projectDir = cwd || process.cwd();
-  return path.join(projectDir, '.codemachine', 'mcp', 'context.json');
+  return path.join(projectDir, '.clawtutor', 'mcp', 'context.json');
 }
 
 /**

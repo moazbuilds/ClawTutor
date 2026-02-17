@@ -8,7 +8,7 @@ let db: Database | null = null;
 export function getDB(): Database {
   if (db) return db;
 
-  const dbPath = '.codemachine/logs/registry.db';
+  const dbPath = '.clawtutor/logs/registry.db';
 
   const dir = dirname(dbPath);
   if (!existsSync(dir)) {

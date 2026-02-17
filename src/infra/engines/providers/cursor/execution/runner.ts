@@ -187,7 +187,7 @@ export async function runCursor(options: RunCursorOptions): Promise<RunCursorRes
   // Set up CURSOR_CONFIG_DIR for authentication
   const cursorConfigDir = process.env[ENV.CURSOR_HOME]
     ? expandHomeDir(process.env[ENV.CURSOR_HOME]!)
-    : path.join(homedir(), '.codemachine', 'cursor');
+    : path.join(homedir(), '.clawtutor', 'cursor');
 
   const mergedEnv = {
     ...process.env,

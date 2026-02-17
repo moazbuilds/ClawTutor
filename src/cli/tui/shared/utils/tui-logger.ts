@@ -36,8 +36,8 @@ export function initTUILogger() {
     return
   }
 
-  // Create log file in .codemachine/logs/
-  const logDir = path.join(homedir(), '.codemachine', 'logs')
+  // Create log file in .clawtutor/logs/
+  const logDir = path.join(homedir(), '.clawtutor', 'logs')
   fs.mkdirSync(logDir, { recursive: true })
 
   const logPath = path.join(logDir, 'tui-debug.log')

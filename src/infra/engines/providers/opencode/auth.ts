@@ -18,7 +18,7 @@ const SENTINEL_FILE = 'auth.json';
  */
 function resolveOpenCodeHome(customPath?: string): string {
   const configured = customPath ?? process.env[ENV.OPENCODE_HOME];
-  const target = configured ? expandHomeDir(configured) : path.join(homedir(), '.codemachine', 'opencode');
+  const target = configured ? expandHomeDir(configured) : path.join(homedir(), '.clawtutor', 'opencode');
   return target;
 }
 

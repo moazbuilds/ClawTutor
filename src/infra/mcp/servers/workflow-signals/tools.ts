@@ -33,7 +33,7 @@ The workflow will wait for approval from the reviewing agent before proceeding t
       },
       artifact_path: {
         type: 'string',
-        description: 'Path to the generated artifact file (e.g., ".codemachine/artifacts/prd.md")',
+        description: 'Path to the generated artifact file (e.g., ".clawtutor/artifacts/prd.md")',
         minLength: 1,
       },
       artifact_hash: {

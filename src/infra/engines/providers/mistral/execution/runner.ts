@@ -214,7 +214,7 @@ export async function runMistral(options: RunMistralOptions): Promise<RunMistral
   // Set up VIBE_HOME / MISTRAL_CONFIG_DIR for authentication
   const vibeHome = process.env[ENV.MISTRAL_HOME]
     ? expandHomeDir(process.env[ENV.MISTRAL_HOME]!)
-    : path.join(homedir(), '.codemachine', 'vibe');
+    : path.join(homedir(), '.clawtutor', 'vibe');
 
   const mergedEnv = {
     ...process.env,

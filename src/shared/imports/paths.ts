@@ -8,17 +8,17 @@ import { homedir } from 'node:os';
 
 /**
  * Get the base directory for CodeMachine user data
- * Default: ~/.codemachine/
+ * Default: ~/.clawtutor/
  */
 export function getCodemachineHomeDir(): string {
   const override = process.env.CODEMACHINE_HOME;
   if (override && override.length > 0) return override;
-  return join(homedir(), '.codemachine');
+  return join(homedir(), '.clawtutor');
 }
 
 /**
  * Get the imports directory
- * Default: ~/.codemachine/imports/
+ * Default: ~/.clawtutor/imports/
  */
 export function getImportsDir(): string {
   const override = process.env.CODEMACHINE_IMPORTS_DIR;
@@ -28,7 +28,7 @@ export function getImportsDir(): string {
 
 /**
  * Get the registry file path
- * Default: ~/.codemachine/imports/registry.json
+ * Default: ~/.clawtutor/imports/registry.json
  */
 export function getRegistryPath(): string {
   return join(getImportsDir(), 'registry.json');

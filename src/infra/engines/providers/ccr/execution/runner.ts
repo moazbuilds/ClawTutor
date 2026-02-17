@@ -124,7 +124,7 @@ export async function runCcr(options: RunCcrOptions): Promise<RunCcrResult> {
   // Set up CCR_CONFIG_DIR for authentication
   const ccrConfigDir = process.env[ENV.CCR_HOME]
     ? expandHomeDir(process.env[ENV.CCR_HOME]!)
-    : path.join(homedir(), '.codemachine', 'ccr');
+    : path.join(homedir(), '.clawtutor', 'ccr');
 
   const mergedEnv = {
     ...process.env,

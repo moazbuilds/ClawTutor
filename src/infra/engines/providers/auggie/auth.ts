@@ -20,7 +20,7 @@ const SENTINEL_FILE = 'auth.json';
  */
 function resolveAuggieHome(customPath?: string): string {
   const configured = customPath ?? process.env[ENV.AUGGIE_HOME];
-  const target = configured ? expandHomeDir(configured) : path.join(homedir(), '.codemachine', 'auggie');
+  const target = configured ? expandHomeDir(configured) : path.join(homedir(), '.clawtutor', 'auggie');
   return target;
 }
 

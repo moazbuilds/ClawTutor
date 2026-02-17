@@ -15,7 +15,7 @@ export interface CodexConfig {
 
   /**
    * Optional custom Codex config directory
-   * Defaults to ~/.codemachine/codex
+   * Defaults to ~/.clawtutor/codex
    */
   codexConfigDir?: string;
 }

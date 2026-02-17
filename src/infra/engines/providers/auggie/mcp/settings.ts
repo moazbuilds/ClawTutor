@@ -20,13 +20,13 @@ import { getRouterConfig, ROUTER_ID } from '../../../../mcp/router/config.js';
 
 /**
  * Resolve AUGGIE_HOME directory
- * Uses CODEMACHINE_AUGGIE_HOME env var or defaults to ~/.codemachine/auggie
+ * Uses CODEMACHINE_AUGGIE_HOME env var or defaults to ~/.clawtutor/auggie
  */
 export function resolveAuggieHome(): string {
   if (process.env[ENV.AUGGIE_HOME]) {
     return expandHomeDir(process.env[ENV.AUGGIE_HOME]!);
   }
-  return path.join(homedir(), '.codemachine', 'auggie');
+  return path.join(homedir(), '.clawtutor', 'auggie');
 }
 
 /**
