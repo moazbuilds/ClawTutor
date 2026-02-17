@@ -34,30 +34,8 @@ export async function handleLogin(providerId: string): Promise<void> {
 
   const action = await engine.auth.nextAuthMenuAction();
   if (action === 'logout') {
-    // Special handling for CCR - show configuration tip instead of generic message
-    if (providerId === 'ccr') {
-      console.log(`\n────────────────────────────────────────────────────────────`);
-      console.log(`  ✅  ${engine.metadata.name} CLI Detected`);
-      console.log(`────────────────────────────────────────────────────────────`);
-      console.log(`\n💡 Tip: CCR is installed but you might still need to configure it`);
-      console.log(`       (if you haven't already).\n`);
-      console.log(`To configure CCR:`);
-      console.log(`  1. Run: ccr ui`);
-      console.log(`     Opens the web UI to add your providers\n`);
-      console.log(`  2. Or manually edit: ~/.claude-code-router/config.json\n`);
-      console.log(`🚀 Easiest way to use CCR inside Clawtutor:`);
-      console.log(`   Logout from all other engines using:`);
-      console.log(`     clawtutor auth logout`);
-      console.log(`   This will run CCR by default for all engines.\n`);
-      console.log(`   Or modify the template by adding ccr engine.`);
-      console.log(`   For full guide, check:`);
-      console.log(`   https://github.com/moazbuilds/ClawTutor-CLI/blob/main/docs/customizing-workflows.md\n`);
-      console.log(`For more help, visit:`);
-      console.log(`  https://github.com/musistudio/claude-code-router\n`);
-      console.log(`────────────────────────────────────────────────────────────\n`);
-    }
     // Special handling for OpenCode - supports multiple auth providers
-    else if (providerId === 'opencode') {
+    if (providerId === 'opencode') {
       console.log(`\n────────────────────────────────────────────────────────────`);
       console.log(`  ✅  ${engine.metadata.name} Already Authenticated`);
       console.log(`────────────────────────────────────────────────────────────\n`);
