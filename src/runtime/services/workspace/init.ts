@@ -4,6 +4,7 @@ import { CLI_ROOT_CANDIDATES, debugLog, loadAgents } from './discovery.js';
 import { ensureDir, mirrorAgentsToJson } from './fs-utils.js';
 import { getImportRoots } from '../../../shared/imports/index.js';
 import { appDebug } from '../../../shared/logging/logger.js';
+import { resolveWorkspaceRoot } from '../../../shared/utils/index.js';
 
 export type WorkspaceStructureOptions = {
   cwd?: string;
@@ -19,7 +20,7 @@ function resolveDesiredCwd(explicitCwd?: string): string {
 }
 
 /**
- * Ensures workspace folder structure under `.codemachine/`.
+ * Ensures workspace folder structure under `.clawtutor/` (or legacy `.codemachine/`).
  * Does NOT load or mirror any agents - that's handled separately by mirrorSubAgents.
  * Idempotent and safe to run repeatedly.
  */
@@ -29,8 +30,8 @@ export async function ensureWorkspaceStructure(options?: WorkspaceStructureOptio
   // Ensure the working directory exists
   await ensureDir(desiredCwd);
 
-  // Prepare .codemachine tree
-  const cmRoot = path.join(desiredCwd, '.codemachine');
+  // Prepare workspace tree
+  const cmRoot = resolveWorkspaceRoot(desiredCwd);
   const agentsDir = path.join(cmRoot, 'agents');
   const inputsDir = path.join(cmRoot, 'inputs');
   const memoryDir = path.join(cmRoot, 'memory');
@@ -54,7 +55,7 @@ export async function ensureWorkspaceStructure(options?: WorkspaceStructureOptio
 }
 
 /**
- * Mirrors sub-agents to `.codemachine/agents/` based on template's subAgentIds.
+ * Mirrors sub-agents to workspace `/agents/` based on template's subAgentIds.
  * Should only be called when the template has subAgentIds defined.
  */
 export async function mirrorSubAgents(options: MirrorSubAgentsOptions): Promise<void> {
@@ -81,7 +82,7 @@ export async function mirrorSubAgents(options: MirrorSubAgentsOptions): Promise<
   );
   appDebug('[mirrorSubAgents] Agent roots to search: %O', agentRoots);
 
-  const cmRoot = path.join(cwd, '.codemachine');
+  const cmRoot = resolveWorkspaceRoot(cwd);
   const agentsDir = path.join(cmRoot, 'agents');
   appDebug('[mirrorSubAgents] Target agentsDir=%s', agentsDir);
 
