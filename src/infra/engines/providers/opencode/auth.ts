@@ -11,19 +11,13 @@ import {
 import { metadata } from './metadata.js';
 import { ENV } from './config.js';
 
-const SENTINEL_FILE = 'auth.json';
-
 /**
- * Resolves the OpenCode home directory (base for all XDG paths)
+ * Resolves CLAWTUTOR_OPENCODE_HOME override.
+ * Returns undefined when not configured so callers can use native XDG defaults.
  */
-function resolveOpenCodeHome(customPath?: string): string {
+function resolveOpenCodeHome(customPath?: string): string | undefined {
   const configured = customPath ?? process.env[ENV.OPENCODE_HOME];
-  const target = configured ? expandHomeDir(configured) : path.join(homedir(), '.clawtutor', 'opencode');
-  return target;
-}
-
-function getSentinelPath(opencodeHome: string): string {
-  return path.join(opencodeHome, 'data', SENTINEL_FILE);
+  return configured ? expandHomeDir(configured) : undefined;
 }
 
 /**
@@ -45,10 +39,39 @@ export async function isAuthenticated(): Promise<boolean> {
  * This uses XDG_DATA_HOME if set, otherwise falls back to standard XDG path
  */
 function resolveOpenCodeDataDir(): string {
+  const opencodeHome = resolveOpenCodeHome();
+  if (opencodeHome) {
+    return path.join(opencodeHome, 'data');
+  }
+
   const xdgData = process.env.XDG_DATA_HOME
     ? expandHomeDir(process.env.XDG_DATA_HOME)
     : path.join(homedir(), '.local', 'share');
   return path.join(xdgData, 'opencode');
+}
+
+function resolveOpenCodeConfigDir(): string {
+  const opencodeHome = resolveOpenCodeHome();
+  if (opencodeHome) {
+    return path.join(opencodeHome, 'config');
+  }
+
+  const xdgConfig = process.env.XDG_CONFIG_HOME
+    ? expandHomeDir(process.env.XDG_CONFIG_HOME)
+    : path.join(homedir(), '.config');
+  return path.join(xdgConfig, 'opencode');
+}
+
+function resolveOpenCodeCacheDir(): string {
+  const opencodeHome = resolveOpenCodeHome();
+  if (opencodeHome) {
+    return path.join(opencodeHome, 'cache');
+  }
+
+  const xdgCache = process.env.XDG_CACHE_HOME
+    ? expandHomeDir(process.env.XDG_CACHE_HOME)
+    : path.join(homedir(), '.cache');
+  return path.join(xdgCache, 'opencode');
 }
 
 async function hasOpenCodeCredential(providerId: string = 'opencode'): Promise<boolean> {
@@ -63,18 +86,11 @@ async function hasOpenCodeCredential(providerId: string = 'opencode'): Promise<b
 }
 
 export async function ensureAuth(forceLogin = false): Promise<boolean> {
-  const opencodeHome = resolveOpenCodeHome();
-  const dataDir = path.join(opencodeHome, 'data');
+  const dataDir = resolveOpenCodeDataDir();
 
   // Check if already authenticated (skip if forceLogin is true)
-  const sentinelPath = getSentinelPath(opencodeHome);
-  if (!forceLogin) {
-    try {
-      await stat(sentinelPath);
-      return true; // Already authenticated
-    } catch {
-      // Sentinel doesn't exist, need to authenticate
-    }
+  if (!forceLogin && await hasOpenCodeCredential('opencode')) {
+    return true;
   }
 
   // Ensure data directory exists before proceeding
@@ -86,13 +102,14 @@ export async function ensureAuth(forceLogin = false): Promise<boolean> {
     throw new Error(`${metadata.name} CLI is not installed.`);
   }
 
-  // Set up XDG environment variables for OpenCode
-  const xdgEnv = {
-    ...process.env,
-    XDG_CONFIG_HOME: path.join(opencodeHome, 'config'),
-    XDG_CACHE_HOME: path.join(opencodeHome, 'cache'),
-    XDG_DATA_HOME: path.join(opencodeHome, 'data'),
-  };
+  // Only force XDG paths when CLAWTUTOR_OPENCODE_HOME override is configured.
+  const xdgEnv = { ...process.env };
+  const opencodeHome = resolveOpenCodeHome();
+  if (opencodeHome) {
+    xdgEnv.XDG_CONFIG_HOME = path.join(opencodeHome, 'config');
+    xdgEnv.XDG_CACHE_HOME = path.join(opencodeHome, 'cache');
+    xdgEnv.XDG_DATA_HOME = path.join(opencodeHome, 'data');
+  }
 
   // Run interactive login via OpenCode CLI
   try {
@@ -119,11 +136,12 @@ export async function ensureAuth(forceLogin = false): Promise<boolean> {
     throw error;
   }
 
-  // Create sentinel file after successful login
+  // Ensure auth file exists (some providers may not be added until first use).
+  const authPath = path.join(resolveOpenCodeDataDir(), 'auth.json');
   try {
-    await stat(sentinelPath);
+    await stat(authPath);
   } catch {
-    await writeFile(sentinelPath, '{}', 'utf8');
+    await writeFile(authPath, '{}', 'utf8');
   }
 
   return true;
@@ -131,15 +149,24 @@ export async function ensureAuth(forceLogin = false): Promise<boolean> {
 
 export async function clearAuth(): Promise<void> {
   const opencodeHome = resolveOpenCodeHome();
+  const targets = opencodeHome
+    ? [opencodeHome]
+    : [resolveOpenCodeConfigDir(), resolveOpenCodeCacheDir(), resolveOpenCodeDataDir()];
 
-  try {
-    await rm(opencodeHome, { recursive: true, force: true });
-  } catch {
-    // Ignore removal errors
+  for (const target of targets) {
+    try {
+      await rm(target, { recursive: true, force: true });
+    } catch {
+      // Ignore removal errors
+    }
   }
 
   console.log(`\n${metadata.name} authentication cleared.`);
-  console.log(`Removed OpenCode home directory at ${opencodeHome} (if it existed).\n`);
+  if (opencodeHome) {
+    console.log(`Removed OpenCode home directory at ${opencodeHome} (if it existed).\n`);
+  } else {
+    console.log(`Removed OpenCode XDG directories (if they existed).\n`);
+  }
 }
 
 export async function nextAuthMenuAction(): Promise<'login' | 'logout'> {
@@ -147,20 +174,9 @@ export async function nextAuthMenuAction(): Promise<'login' | 'logout'> {
   const cli = await isAuthenticated();
   if (!cli) return 'login';
 
-  // If sentinel is missing or membership credential not found → show login guidance
-  const opencodeHome = resolveOpenCodeHome();
-  const sentinel = getSentinelPath(opencodeHome);
-  let hasSentinel = false;
-  try {
-    await stat(sentinel);
-    hasSentinel = true;
-  } catch {
-    hasSentinel = false;
-  }
-
+  // If membership credential not found → show login guidance
   const hasMembership = await hasOpenCodeCredential('opencode');
-
-  return hasSentinel && hasMembership ? 'logout' : 'login';
+  return hasMembership ? 'logout' : 'login';
 }
 
-export { resolveOpenCodeHome };
+export { resolveOpenCodeHome, resolveOpenCodeConfigDir };
