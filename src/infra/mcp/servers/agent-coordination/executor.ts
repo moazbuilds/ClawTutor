@@ -27,7 +27,7 @@ import type {
  * Execute agents using CoordinatorService
  *
  * Wraps the coordinator with timeout handling and MCP-friendly result format.
- * Uses working_dir from input, falling back to CODEMACHINE_WORKING_DIR env var
+ * Uses working_dir from input, falling back to CLAWTUTOR_WORKING_DIR env var
  * (set by the router when spawning this server), then process.cwd().
  */
 export async function executeAgents(input: RunAgentsInput): Promise<ExecutionResult> {
@@ -35,7 +35,7 @@ export async function executeAgents(input: RunAgentsInput): Promise<ExecutionRes
   const coordinator = CoordinatorService.getInstance();
 
   // Prefer input.working_dir, then env var set by router, then cwd
-  const workingDir = input.working_dir || process.env.CODEMACHINE_WORKING_DIR || process.cwd();
+  const workingDir = input.working_dir || process.env.CLAWTUTOR_WORKING_DIR || process.cwd();
 
   // Create timeout promise
   const timeoutPromise = new Promise<never>((_, reject) => {
@@ -133,14 +133,14 @@ export interface AvailableAgent {
 /**
  * List all available agents from the catalog
  *
- * Uses working_dir from input, falling back to CODEMACHINE_WORKING_DIR env var
+ * Uses working_dir from input, falling back to CLAWTUTOR_WORKING_DIR env var
  * (set by the router when spawning this server), then resolveProjectRoot defaults.
  */
 export async function listAvailableAgents(
   input: ListAvailableAgentsInput
 ): Promise<AvailableAgent[]> {
   // Prefer input.working_dir, then env var set by router, then let resolveProjectRoot decide
-  const workingDir = input.working_dir || process.env.CODEMACHINE_WORKING_DIR;
+  const workingDir = input.working_dir || process.env.CLAWTUTOR_WORKING_DIR;
   const projectRoot = resolveProjectRoot(workingDir);
   const definitions = await collectAgentDefinitions(projectRoot);
 

@@ -1,5 +1,5 @@
 /**
- * CodeMachine Import System
+ * ClawTutor Import System
  *
  * Provides functionality for importing external workflow packages
  * from GitHub and other git repositories.
@@ -17,7 +17,7 @@ export type {
 
 // Path utilities
 export {
-  getCodemachineHomeDir,
+  getClawtutorHomeDir,
   getImportsDir,
   getRegistryPath,
   ensureImportsDir,

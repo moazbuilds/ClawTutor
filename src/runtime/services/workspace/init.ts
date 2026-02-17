@@ -16,7 +16,7 @@ export type MirrorSubAgentsOptions = {
 };
 
 function resolveDesiredCwd(explicitCwd?: string): string {
-  return explicitCwd ?? process.env.CODEMACHINE_CWD ?? process.cwd();
+  return explicitCwd ?? process.env.CLAWTUTOR_CWD ?? process.cwd();
 }
 
 /**

@@ -78,6 +78,6 @@ export const DEFAULT_TIMEOUT = 1800000;
  * Environment variable names
  */
 export const ENV = {
-  MISTRAL_HOME: 'CODEMACHINE_MISTRAL_HOME',
+  MISTRAL_HOME: 'CLAWTUTOR_MISTRAL_HOME',
 } as const;
 

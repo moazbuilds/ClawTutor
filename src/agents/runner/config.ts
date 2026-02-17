@@ -36,7 +36,7 @@ function getDefaultPromptPath(agentId: string): string {
  * Loads the agent configuration by ID from all available agent files
  */
 export async function loadAgentConfig(agentId: string, projectRoot?: string): Promise<AgentConfig> {
-  const lookupBase = projectRoot ?? process.env.CODEMACHINE_CWD ?? process.cwd();
+  const lookupBase = projectRoot ?? process.env.CLAWTUTOR_CWD ?? process.cwd();
   const resolvedRoot = resolveProjectRoot(lookupBase);
 
   // Collect all agent definitions from all config files
@@ -55,7 +55,7 @@ export async function loadAgentConfig(agentId: string, projectRoot?: string): Pr
  */
 export async function loadAgentTemplate(agentId: string, projectRoot?: string): Promise<string> {
   const config = await loadAgentConfig(agentId, projectRoot);
-  const lookupBase = projectRoot ?? process.env.CODEMACHINE_CWD ?? process.cwd();
+  const lookupBase = projectRoot ?? process.env.CLAWTUTOR_CWD ?? process.cwd();
   const resolvedRoot = resolveProjectRoot(lookupBase);
 
   // Use config.promptPath if provided, otherwise generate default path from agent ID

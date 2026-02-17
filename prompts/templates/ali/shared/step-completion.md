@@ -24,7 +24,7 @@ Present a clear summary of what was decided or created in this step:
 
 When user confirms (says yes, looks good, confirms, or similar):
 
-1. **Append the step's XML data** to `.codemachine/workflow-plans/\{workflow_name\}-plan.md`
+1. **Append the step's XML data** to `.clawtutor/workflow-plans/\{workflow_name\}-plan.md`
 2. **Update TodoWrite** to mark current step completed and next step in_progress
 3. **Confirm to user**: "✓ Saved to workflow plan"
 

@@ -17,7 +17,7 @@ export const { use: useSession, provider: SessionProvider } = createSimpleContex
 
     // Load active template from workspace template.json
     onMount(async () => {
-      const cwd = process.env.CODEMACHINE_CWD || process.cwd()
+      const cwd = process.env.CLAWTUTOR_CWD || process.cwd()
       const cmRoot = resolveWorkspaceRoot(cwd)
       const activeTemplate = await getActiveTemplate(cmRoot)
 

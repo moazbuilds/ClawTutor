@@ -150,7 +150,7 @@ export function App(props: { initialToast?: InitialToast }) {
 
   const handleStartWorkflow = async () => {
     appDebug('[AppShell] handleStartWorkflow called')
-    const cwd = process.env.CODEMACHINE_CWD || process.cwd()
+    const cwd = process.env.CLAWTUTOR_CWD || process.cwd()
     const cmRoot = resolveWorkspaceRoot(cwd)
     appDebug('[AppShell] cwd=%s, cmRoot=%s', cwd, cmRoot)
 
@@ -226,7 +226,7 @@ export function App(props: { initialToast?: InitialToast }) {
     // @ts-expect-error - global export for workflow connection
     globalThis.__workflowEventBus = eventBus
 
-    const cwd = process.env.CODEMACHINE_CWD || process.cwd()
+    const cwd = process.env.CLAWTUTOR_CWD || process.cwd()
     const specPath = path.join(cwd, WORKSPACE_DIRNAME, 'inputs', 'specifications.md')
     appDebug('[AppShell] specPath=%s', specPath)
 
@@ -248,7 +248,7 @@ export function App(props: { initialToast?: InitialToast }) {
   }
 
   const handleOnboardComplete = async (result: { projectName?: string; trackId?: string; conditions?: string[] }) => {
-    const cwd = process.env.CODEMACHINE_CWD || process.cwd()
+    const cwd = process.env.CLAWTUTOR_CWD || process.cwd()
     const cmRoot = resolveWorkspaceRoot(cwd)
 
     // Save project name if provided

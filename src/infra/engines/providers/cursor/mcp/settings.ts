@@ -20,7 +20,7 @@ import { getRouterConfig, ROUTER_ID } from '../../../../mcp/router/config.js';
 
 /**
  * Resolve CURSOR_HOME directory
- * Uses CODEMACHINE_CURSOR_HOME env var or defaults to ~/.clawtutor/cursor
+ * Uses CLAWTUTOR_CURSOR_HOME env var or defaults to ~/.clawtutor/cursor
  */
 export function resolveCursorHome(): string {
   if (process.env[ENV.CURSOR_HOME]) {
@@ -93,7 +93,7 @@ export async function writeConfig(configPath: string, config: CursorMCPConfig): 
 /**
  * Get MCP router configuration for Cursor format
  *
- * The router now runs as `codemachine mcp router` and uses process.cwd()
+ * The router now runs as `clawtutor mcp router` and uses process.cwd()
  * for the working directory, eliminating the need for path parameters.
  */
 export function getMCPRouterConfig(): MCPServerConfig {
@@ -122,7 +122,7 @@ export function addMCPServers(config: CursorMCPConfig): CursorMCPConfig {
 }
 
 /**
- * Remove codemachine MCP router from config
+ * Remove clawtutor MCP router from config
  */
 export function removeMCPServers(config: CursorMCPConfig): CursorMCPConfig {
   if (!config.mcpServers) {
@@ -138,7 +138,7 @@ export function removeMCPServers(config: CursorMCPConfig): CursorMCPConfig {
 }
 
 /**
- * Check if config contains codemachine MCP router
+ * Check if config contains clawtutor MCP router
  */
 export function hasMCPServers(config: CursorMCPConfig): boolean {
   return !!(config.mcpServers?.[ROUTER_ID]);

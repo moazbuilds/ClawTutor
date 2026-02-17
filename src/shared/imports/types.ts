@@ -1,9 +1,9 @@
 /**
- * Type definitions for the CodeMachine import system
+ * Type definitions for the ClawTutor import system
  */
 
 /**
- * Manifest file structure (codemachine.json)
+ * Manifest file structure (clawtutor.json)
  * Minimal by default, with optional path overrides
  */
 export interface ImportManifest {

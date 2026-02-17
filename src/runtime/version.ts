@@ -2,7 +2,7 @@ import { readFileSync } from 'node:fs';
 import { join } from 'node:path';
 
 /**
- * Gets the version of CodeMachine.
+ * Gets the version of ClawTutor.
  *
  * In development mode: Reads from package.json
  * In production/compiled mode: Uses injected VERSION constant
@@ -12,24 +12,24 @@ import { join } from 'node:path';
 
 const INJECTED_VERSION: string | undefined =
   // @ts-expect-error - This will be injected by the build script for compiled binaries
-  typeof __CODEMACHINE_VERSION__ !== 'undefined'
+  typeof __CLAWTUTOR_VERSION__ !== 'undefined'
     // @ts-expect-error - This will be injected by the build script for compiled binaries
-    ? __CODEMACHINE_VERSION__
+    ? __CLAWTUTOR_VERSION__
     : undefined;
 
 let cachedVersion: string | null = null;
-const VALID_PACKAGE_NAMES = new Set(['clawtutor', 'codemachine']);
+const VALID_PACKAGE_NAMES = new Set(['clawtutor', 'clawtutor']);
 
 function getVersionFromPackageJson(): string {
   try {
     // Try to resolve package.json using environment variables first
     const envCandidates = [
-      process.env.CODEMACHINE_PACKAGE_JSON,
-      process.env.CODEMACHINE_PACKAGE_ROOT
-        ? join(process.env.CODEMACHINE_PACKAGE_ROOT, 'package.json')
+      process.env.CLAWTUTOR_PACKAGE_JSON,
+      process.env.CLAWTUTOR_PACKAGE_ROOT
+        ? join(process.env.CLAWTUTOR_PACKAGE_ROOT, 'package.json')
         : undefined,
-      process.env.CODEMACHINE_INSTALL_DIR
-        ? join(process.env.CODEMACHINE_INSTALL_DIR, 'package.json')
+      process.env.CLAWTUTOR_INSTALL_DIR
+        ? join(process.env.CLAWTUTOR_INSTALL_DIR, 'package.json')
         : undefined,
     ];
 

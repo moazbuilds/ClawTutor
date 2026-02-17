@@ -1,5 +1,5 @@
 export default {
-  name: 'CodeMachine Workflow Builder',
+  name: 'ClawTutor Workflow Builder',
   autonomousMode: 'never',
   projectName: true,
 

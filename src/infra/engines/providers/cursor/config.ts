@@ -85,5 +85,5 @@ export const DEFAULT_TIMEOUT = 1800000;
  * Environment variable names
  */
 export const ENV = {
-  CURSOR_HOME: 'CODEMACHINE_CURSOR_HOME',
+  CURSOR_HOME: 'CLAWTUTOR_CURSOR_HOME',
 } as const;

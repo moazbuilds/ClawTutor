@@ -5,7 +5,7 @@ import * as path from 'node:path';
 import { setAppLogFile, appDebug } from '../shared/logging/logger.js';
 import { resolveWorkspaceRoot, WORKSPACE_DIRNAME } from '../shared/utils/index.js';
 
-const earlyCwd = process.env.CODEMACHINE_CWD || process.cwd();
+const earlyCwd = process.env.CLAWTUTOR_CWD || process.cwd();
 const earlyLogLevel = (process.env.LOG_LEVEL || '').trim().toLowerCase();
 const earlyDebugFlag = (process.env.DEBUG || '').trim().toLowerCase();
 const earlyDebugEnabled = earlyLogLevel === 'debug' || (earlyDebugFlag !== '' && earlyDebugFlag !== '0' && earlyDebugFlag !== 'false');
@@ -24,14 +24,14 @@ appDebug('[Boot] Ensuring embedded resources');
 const embeddedRoot = await ensureResources();
 appDebug('[Boot] embeddedRoot=%s', embeddedRoot);
 
-if (!embeddedRoot && !process.env.CODEMACHINE_INSTALL_DIR) {
+if (!embeddedRoot && !process.env.CLAWTUTOR_INSTALL_DIR) {
   // Fallback to normal resolution if not embedded
   appDebug('[Boot] Resolving package root (fallback)');
   const { resolvePackageRoot } = await import('../shared/runtime/root.js');
   try {
     const packageRoot = resolvePackageRoot(import.meta.url, 'cli-setup');
-    process.env.CODEMACHINE_INSTALL_DIR = packageRoot;
-    appDebug('[Boot] CODEMACHINE_INSTALL_DIR=%s', packageRoot);
+    process.env.CLAWTUTOR_INSTALL_DIR = packageRoot;
+    appDebug('[Boot] CLAWTUTOR_INSTALL_DIR=%s', packageRoot);
   } catch (err) {
     appDebug('[Boot] Failed to resolve package root: %s', err);
     // Continue without setting
@@ -73,15 +73,15 @@ try {
     console.error(`${bold}  Cannot run from home directory${reset}`);
     console.error(`${dim}───────────────────────────────────────────────${reset}`);
     console.error('');
-    console.error('  CodeMachine needs to run in a project directory,');
+    console.error('  ClawTutor needs to run in a project directory,');
     console.error('  not directly in your home folder.');
     console.error('');
     console.error(`  ${dim}Try:${reset}`);
     console.error(`    ${cyan}cd ~/your-project${reset}`);
-    console.error(`    ${cyan}codemachine${reset}`);
+    console.error(`    ${cyan}clawtutor${reset}`);
     console.error('');
     console.error(`  ${dim}Or specify a directory:${reset}`);
-    console.error(`    ${cyan}codemachine --dir ~/your-project${reset}`);
+    console.error(`    ${cyan}clawtutor --dir ~/your-project${reset}`);
     console.error('');
     process.exit(1);
   }
@@ -145,8 +145,8 @@ async function initializeInBackground(cwd: string): Promise<void> {
   appDebug('[Init] Background initialization complete');
 }
 
-export async function runCodemachineCli(argv: string[] = process.argv): Promise<void> {
-  appDebug('[CLI] runCodemachineCli started');
+export async function runClawtutorCli(argv: string[] = process.argv): Promise<void> {
+  appDebug('[CLI] runClawtutorCli started');
 
   // Import version from auto-generated version file (works in compiled binaries)
   appDebug('[CLI] Importing version');
@@ -154,18 +154,18 @@ export async function runCodemachineCli(argv: string[] = process.argv): Promise<
   appDebug('[CLI] VERSION=%s', VERSION);
 
   const program = new Command()
-    .name('codemachine')
+    .name('clawtutor')
     .version(VERSION)
-    .description('Codemachine multi-agent CLI orchestrator')
+    .description('Clawtutor multi-agent CLI orchestrator')
     .option('-d, --dir <path>', 'Target workspace directory', process.cwd())
     .option('--spec <path>', 'Path to the planning specification file', DEFAULT_SPEC_PATH)
     .action(async (options) => {
       appDebug('[CLI] Action handler entered');
       // Set CWD immediately (lightweight, no I/O)
       const cwd = options.dir || process.cwd();
-      process.env.CODEMACHINE_CWD = cwd;
+      process.env.CLAWTUTOR_CWD = cwd;
       if (options.spec && options.spec !== DEFAULT_SPEC_PATH) {
-        process.env.CODEMACHINE_SPEC_PATH = path.resolve(cwd, options.spec);
+        process.env.CLAWTUTOR_SPEC_PATH = path.resolve(cwd, options.spec);
       }
       appDebug('[CLI] CWD set to %s', cwd);
 
@@ -239,8 +239,8 @@ const shouldRunCli = (() => {
     return matches;
   } catch (err) {
     appDebug('[Boot] realpathSync failed: %s, using fallback', err);
-    // Fallback: if entry contains 'index' or 'codemachine', run CLI
-    const fallback = entry.includes('index') || entry.includes('codemachine');
+    // Fallback: if entry contains 'index' or 'clawtutor', run CLI
+    const fallback = entry.includes('index') || entry.includes('clawtutor');
     appDebug('[Boot] fallback result=%s', fallback);
     return fallback;
   }
@@ -249,9 +249,9 @@ const shouldRunCli = (() => {
 appDebug('[Boot] shouldRunCli=%s', shouldRunCli);
 
 if (shouldRunCli) {
-  appDebug('[Boot] Calling runCodemachineCli()');
-  runCodemachineCli().catch((error) => {
-    appDebug('[Boot] runCodemachineCli error: %s', error);
+  appDebug('[Boot] Calling runClawtutorCli()');
+  runClawtutorCli().catch((error) => {
+    appDebug('[Boot] runClawtutorCli error: %s', error);
     console.error(error);
     process.exitCode = 1;
   });

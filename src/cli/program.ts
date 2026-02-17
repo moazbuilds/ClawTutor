@@ -20,7 +20,7 @@ export async function registerCli(program: Command): Promise<void> {
     .action(() => {
       const require = createRequire(import.meta.url);
       const pkg = require(packageJsonPath) as { version: string };
-      console.log(`CodeMachine v${pkg.version}`);
+      console.log(`ClawTutor v${pkg.version}`);
     });
 
   registerMCPCommand(program);

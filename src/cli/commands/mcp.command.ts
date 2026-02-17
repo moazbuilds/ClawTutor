@@ -1,7 +1,7 @@
 /**
  * MCP CLI Commands
  *
- * Commands for running MCP servers as part of the codemachine binary.
+ * Commands for running MCP servers as part of the clawtutor binary.
  */
 
 import { Command } from 'commander';

@@ -1,13 +1,13 @@
 /**
- * Import command for CodeMachine
+ * Import command for ClawTutor
  *
  * Usage:
- *   codemachine import <source>           Install/update an import
- *   codemachine import --list             List installed imports
- *   codemachine import --remove <name>    Remove an import
+ *   clawtutor import <source>           Install/update an import
+ *   clawtutor import --list             List installed imports
+ *   clawtutor import --remove <name>    Remove an import
  *
  * Source formats:
- *   - Local path: /path/to/folder or ./relative/path (requires .codemachine.json)
+ *   - Local path: /path/to/folder or ./relative/path (requires .clawtutor.json)
  *   - GitHub: package-name, owner/repo, or https://github.com/...
  *   - Git URL: git@github.com:user/repo.git
  */
@@ -199,7 +199,7 @@ async function removeImport(name: string): Promise<void> {
 
   if (!installed) {
     console.error(`\n❌ Import not found: ${name}`);
-    console.log('\nUse "codemachine import --list" to see installed imports.');
+    console.log('\nUse "clawtutor import --list" to see installed imports.');
     return;
   }
 
@@ -225,10 +225,10 @@ function listImports(): void {
   if (imports.length === 0) {
     console.log('\nNo imports installed.');
     console.log(`\nTo install an import, use:`);
-    console.log(`  codemachine import <package-name>`);
-    console.log(`  codemachine import <owner>/<repo>`);
-    console.log(`  codemachine import <https://github.com/...>`);
-    console.log(`  codemachine import </path/to/folder>  (local with .codemachine.json)`);
+    console.log(`  clawtutor import <package-name>`);
+    console.log(`  clawtutor import <owner>/<repo>`);
+    console.log(`  clawtutor import <https://github.com/...>`);
+    console.log(`  clawtutor import </path/to/folder>  (local with .clawtutor.json)`);
     return;
   }
 
@@ -263,7 +263,7 @@ async function runImportCommand(
     if (options.remove) {
       if (!source) {
         console.error('❌ Please specify an import to remove.');
-        console.log('Usage: codemachine import --remove <name>');
+        console.log('Usage: clawtutor import --remove <name>');
         return;
       }
       await removeImport(source);
@@ -274,14 +274,14 @@ async function runImportCommand(
     if (!source) {
       console.error('❌ Please specify a source to import.');
       console.log('\nUsage:');
-      console.log(`  codemachine import <package-name>`);
-      console.log(`  codemachine import <owner>/<repo>`);
-      console.log(`  codemachine import <https://github.com/...>`);
-      console.log(`  codemachine import </path/to/folder>   (local path with .codemachine.json)`);
-      console.log(`  codemachine import <./relative/path>   (local path with .codemachine.json)`);
+      console.log(`  clawtutor import <package-name>`);
+      console.log(`  clawtutor import <owner>/<repo>`);
+      console.log(`  clawtutor import <https://github.com/...>`);
+      console.log(`  clawtutor import </path/to/folder>   (local path with .clawtutor.json)`);
+      console.log(`  clawtutor import <./relative/path>   (local path with .clawtutor.json)`);
       console.log('\nOther options:');
-      console.log('  codemachine import --list            List installed imports');
-      console.log('  codemachine import --remove <name>   Remove an import');
+      console.log('  clawtutor import --list            List installed imports');
+      console.log('  clawtutor import --remove <name>   Remove an import');
       return;
     }
 

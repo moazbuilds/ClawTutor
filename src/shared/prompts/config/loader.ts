@@ -23,7 +23,7 @@ export function loadPlaceholdersConfig(): PlaceholdersConfig {
   try {
     const packageRoot = getPackageRoot();
     if (!packageRoot) {
-      console.warn('Warning: Could not find codemachine package root');
+      console.warn('Warning: Could not find clawtutor package root');
       debug('[PLACEHOLDER-CONFIG] WARNING: Could not find package root');
       return {};
     }

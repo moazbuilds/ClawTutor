@@ -1,8 +1,8 @@
 /**
- * Export command for CodeMachine
+ * Export command for ClawTutor
  *
  * Usage:
- *   codemachine export    Shows the imports folder path
+ *   clawtutor export    Shows the imports folder path
  */
 
 import type { Command } from 'commander';

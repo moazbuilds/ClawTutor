@@ -38,5 +38,5 @@ export const DEFAULT_TIMEOUT = 1800000;
  * Environment variable names
  */
 export const ENV = {
-  CODEX_HOME: 'CODEMACHINE_CODEX_HOME',
+  CODEX_HOME: 'CLAWTUTOR_CODEX_HOME',
 } as const;

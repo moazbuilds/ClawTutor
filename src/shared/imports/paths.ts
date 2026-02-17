@@ -1,5 +1,5 @@
 /**
- * Path resolution for the CodeMachine import system
+ * Path resolution for the ClawTutor import system
  */
 
 import { existsSync, mkdirSync, readdirSync, statSync } from 'node:fs';
@@ -7,11 +7,11 @@ import { join } from 'node:path';
 import { homedir } from 'node:os';
 
 /**
- * Get the base directory for CodeMachine user data
+ * Get the base directory for ClawTutor user data
  * Default: ~/.clawtutor/
  */
-export function getCodemachineHomeDir(): string {
-  const override = process.env.CODEMACHINE_HOME;
+export function getClawtutorHomeDir(): string {
+  const override = process.env.CLAWTUTOR_HOME;
   if (override && override.length > 0) return override;
   return join(homedir(), '.clawtutor');
 }
@@ -21,9 +21,9 @@ export function getCodemachineHomeDir(): string {
  * Default: ~/.clawtutor/imports/
  */
 export function getImportsDir(): string {
-  const override = process.env.CODEMACHINE_IMPORTS_DIR;
+  const override = process.env.CLAWTUTOR_IMPORTS_DIR;
   if (override && override.length > 0) return override;
-  return join(getCodemachineHomeDir(), 'imports');
+  return join(getClawtutorHomeDir(), 'imports');
 }
 
 /**

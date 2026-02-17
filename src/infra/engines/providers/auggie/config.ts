@@ -27,5 +27,5 @@ export const DEFAULT_TIMEOUT = 1800000;
  * Environment variable names
  */
 export const ENV = {
-  AUGGIE_HOME: 'CODEMACHINE_AUGGIE_HOME',
+  AUGGIE_HOME: 'CLAWTUTOR_AUGGIE_HOME',
 } as const;

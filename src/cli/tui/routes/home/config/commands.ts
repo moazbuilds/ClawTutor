@@ -24,7 +24,7 @@ export function getVersion(): string {
  * Shows relative path if in current directory, otherwise full path
  */
 export function getSpecPath(): string {
-  const cwd = process.env.CODEMACHINE_CWD || process.cwd()
+  const cwd = process.env.CLAWTUTOR_CWD || process.cwd()
   const fullPath = path.join(cwd, WORKSPACE_DIRNAME, "inputs", "specifications.md")
   const relativePath = path.relative(process.cwd(), fullPath)
   return relativePath.startsWith("..") ? fullPath : relativePath
@@ -34,7 +34,7 @@ export function getSpecPath(): string {
  * Get the absolute specification file path
  */
 export function getAbsoluteSpecPath(): string {
-  const cwd = process.env.CODEMACHINE_CWD || process.cwd()
+  const cwd = process.env.CLAWTUTOR_CWD || process.cwd()
   return path.join(cwd, WORKSPACE_DIRNAME, "inputs", "specifications.md")
 }
 

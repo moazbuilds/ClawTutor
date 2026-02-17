@@ -88,7 +88,7 @@ export default {
     // FOLDER RESOLUTION - Load multiple steps
     // ============================================
     // Loads all numbered files: 0-*.md, 1-*.md, etc.
-    ...resolveFolder('codemachine'),
+    ...resolveFolder('clawtutor'),
 
     // Folder with overrides (applies to ALL steps in folder)
     ...resolveFolder('spec-kit', {

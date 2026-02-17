@@ -41,7 +41,7 @@ export function ErrorModal(props: ErrorModalProps) {
         paddingBottom={1}
       >
         <text fg={themeCtx.theme.error}>{props.message}</text>
-        <text>{"\n\n"}Report issues: https://github.com/moazbuilds/CodeMachine-CLI/issues</text>
+        <text>{"\n\n"}Report issues: https://github.com/moazbuilds/ClawTutor-CLI/issues</text>
       </box>
       <box flexDirection="row" justifyContent="center" paddingBottom={1}>
         <box

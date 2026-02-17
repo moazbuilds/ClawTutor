@@ -64,17 +64,17 @@ jobs:
           # Get the tag name (from release event or ref)
           TAG_NAME="${{ github.event.release.tag_name || github.ref_name }}"
           # Rename binaries to match expected download names
-          cp binaries/codemachine-linux-x64/codemachine codemachine-linux-x64
-          cp binaries/codemachine-linux-arm64/codemachine codemachine-linux-arm64
-          cp binaries/codemachine-darwin-arm64/codemachine codemachine-darwin-arm64
-          cp binaries/codemachine-darwin-x64/codemachine codemachine-darwin-x64
-          cp binaries/codemachine-windows-x64/codemachine.exe codemachine-windows-x64.exe
+          cp binaries/clawtutor-linux-x64/clawtutor clawtutor-linux-x64
+          cp binaries/clawtutor-linux-arm64/clawtutor clawtutor-linux-arm64
+          cp binaries/clawtutor-darwin-arm64/clawtutor clawtutor-darwin-arm64
+          cp binaries/clawtutor-darwin-x64/clawtutor clawtutor-darwin-x64
+          cp binaries/clawtutor-windows-x64/clawtutor.exe clawtutor-windows-x64.exe
 
           # Upload to release
           gh release upload "$TAG_NAME" \
-            codemachine-linux-x64 \
-            codemachine-linux-arm64 \
-            codemachine-darwin-arm64 \
-            codemachine-darwin-x64 \
-            codemachine-windows-x64.exe \
+            clawtutor-linux-x64 \
+            clawtutor-linux-arm64 \
+            clawtutor-darwin-arm64 \
+            clawtutor-darwin-x64 \
+            clawtutor-windows-x64.exe \
             --clobber

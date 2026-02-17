@@ -39,7 +39,7 @@ export interface CrashRestoreContext {
   uniqueAgentId: string;
   /** Working directory */
   cwd: string;
-  /** .codemachine root directory */
+  /** .clawtutor root directory */
   cmRoot: string;
   /** Event emitter for UI updates */
   emitter: WorkflowEventEmitter;

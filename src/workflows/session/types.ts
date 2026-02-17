@@ -28,7 +28,7 @@ export interface StepSessionConfig {
   /** Working directory */
   cwd: string;
 
-  /** CodeMachine root directory */
+  /** ClawTutor root directory */
   cmRoot: string;
 
   /** Event emitter for status updates */

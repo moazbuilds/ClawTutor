@@ -13,7 +13,7 @@ export async function showAgentLogs(agentId: number): Promise<void> {
 
   if (!agent) {
     console.error(chalk.red(`Agent ${agentId} not found`));
-    console.error(chalk.dim('Use "codemachine agents" to see all agents'));
+    console.error(chalk.dim('Use "clawtutor agents" to see all agents'));
     process.exit(1);
   }
 

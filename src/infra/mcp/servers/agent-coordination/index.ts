@@ -3,7 +3,7 @@
  * Agent Coordination MCP Server
  *
  * A Model Context Protocol (MCP) server that provides tools for executing
- * codemachine agents and querying their status.
+ * clawtutor agents and querying their status.
  *
  * This server wraps CoordinatorService to allow external tools (Claude Code,
  * Codex, etc.) to run agents via MCP tool calls.

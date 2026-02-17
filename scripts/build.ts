@@ -149,7 +149,7 @@ const platformMap = {
   'darwin-x64': { target: 'bun-darwin-x64', pkgOs: 'darwin', npmOs: 'darwin', arch: 'x64', ext: '' },
   // NOTE: npm expects `win32` in the package.json `os` field; using `windows` causes the
   // optional dependency to be skipped entirely on Windows. Keep the package name as
-  // `codemachine-windows-x64`, but set the npm metadata to `win32` so it installs.
+  // `clawtutor-windows-x64`, but set the npm metadata to `win32` so it installs.
   'win32-x64': {
     target: 'bun-windows-x64',
     pkgOs: 'windows',
@@ -203,12 +203,12 @@ try {
       ext,
       key,
     } = targetConfig;
-    const outdir = join(outputRoot, `codemachine-${pkgOs}-${archName}`);
+    const outdir = join(outputRoot, `clawtutor-${pkgOs}-${archName}`);
 
     console.log(`${cyan}→${reset} Building ${dim}${target}${reset}...`);
     mkdirSync(outdir, { recursive: true });
 
-    const binaryPath = join(outdir, `codemachine${ext}`);
+    const binaryPath = join(outdir, `clawtutor${ext}`);
 
     const result = await Bun.build({
       conditions: ['browser'],
@@ -216,7 +216,7 @@ try {
       plugins: [solidPlugin], // SolidJS transform for TUI
       minify: true,
       define: {
-        __CODEMACHINE_VERSION__: JSON.stringify(mainVersion),
+        __CLAWTUTOR_VERSION__: JSON.stringify(mainVersion),
       },
       naming: {
         asset: '[dir]/[name].[ext]', // Preserve original filenames (no hashing)
@@ -240,7 +240,7 @@ try {
     }
 
     // Create package.json for the platform-specific package
-    const pkgName = `codemachine-${pkgOs}-${archName}`;
+    const pkgName = `clawtutor-${pkgOs}-${archName}`;
 
     const pkg = {
       name: pkgName,
@@ -248,10 +248,10 @@ try {
       description: `${mainPackage.description} (prebuilt ${pkgOs}-${archName} binary)`,
       os: [npmOs],
       cpu: [archName],
-      files: [`codemachine${ext}`],
+      files: [`clawtutor${ext}`],
       bin: {
-        codemachine: `codemachine${ext}`,
-        cm: `codemachine${ext}`,
+        clawtutor: `clawtutor${ext}`,
+        cm: `clawtutor${ext}`,
       },
     };
 
@@ -267,7 +267,7 @@ try {
     }
 
     console.log(`${green}✓${reset} ${bold}Built ${pkgName}${reset}`);
-    console.log(`${dim}  • ${outdir}/codemachine${ext}${reset}\n`);
+    console.log(`${dim}  • ${outdir}/clawtutor${ext}${reset}\n`);
   }
 
   console.log(`\n${green}✓${reset} ${bold}Build complete for ${targets.length} target(s)${reset}\n`);

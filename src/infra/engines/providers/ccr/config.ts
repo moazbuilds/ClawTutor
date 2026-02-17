@@ -38,5 +38,5 @@ export const DEFAULT_TIMEOUT = 1800000;
  * Environment variable names
  */
 export const ENV = {
-  CCR_HOME: 'CODEMACHINE_CCR_HOME',
+  CCR_HOME: 'CLAWTUTOR_CCR_HOME',
 } as const;

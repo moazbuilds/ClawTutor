@@ -1,4 +1,4 @@
-# Contributing to CodeMachine
+# Contributing to ClawTutor
 
 ## Ways to Contribute
 

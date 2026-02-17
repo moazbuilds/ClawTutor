@@ -4,12 +4,12 @@ const promptsDir = path.join(__dirname, '..', 'prompts', 'templates');
 
 module.exports = [
   // ========================================
-  // Ali - CodeMachine Workflow Builder (Expert Mode)
+  // Ali - ClawTutor Workflow Builder (Expert Mode)
   // ========================================
   {
     id: 'cm-workflow-builder',
     name: 'Ali | The CM Guy',
-    description: 'CodeMachine workflow builder for creating agents, prompts, and workflows (Expert Mode - 5 guided steps)',
+    description: 'ClawTutor workflow builder for creating agents, prompts, and workflows (Expert Mode - 5 guided steps)',
     promptPath: [
       path.join(promptsDir, 'ali', 'ali.md'),
       path.join(promptsDir, 'ali', 'workflow.md'),
@@ -45,7 +45,7 @@ module.exports = [
   {
     id: 'cm-workflow-builder-quick',
     name: 'Ali | The CM Guy',
-    description: 'CodeMachine workflow builder - Quick Mode (one-step build with all requirements gathered upfront)',
+    description: 'ClawTutor workflow builder - Quick Mode (one-step build with all requirements gathered upfront)',
     promptPath: [
       path.join(promptsDir, 'ali', 'ali.md'),
       path.join(promptsDir, 'ali', 'quick-workflow.md'),

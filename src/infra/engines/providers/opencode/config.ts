@@ -31,5 +31,5 @@ export const DEFAULT_TIMEOUT = 1800000;
  * Environment variable names
  */
 export const ENV = {
-  OPENCODE_HOME: 'CODEMACHINE_OPENCODE_HOME',
+  OPENCODE_HOME: 'CLAWTUTOR_OPENCODE_HOME',
 } as const;

@@ -1,16 +1,16 @@
 /**
- * Manifest parsing and validation for CodeMachine imports
+ * Manifest parsing and validation for ClawTutor imports
  */
 
 import { existsSync, readFileSync, readdirSync } from 'node:fs';
 import { join } from 'node:path';
 import type { ImportManifest, ValidationResult } from './types.js';
 
-const MANIFEST_FILENAME = 'codemachine.json';
-const LOCAL_MANIFEST_FILENAME = '.codemachine.json';
+const MANIFEST_FILENAME = 'clawtutor.json';
+const LOCAL_MANIFEST_FILENAME = '.clawtutor.json';
 
 /**
- * Default paths following CodeMachine conventions
+ * Default paths following ClawTutor conventions
  */
 const DEFAULT_PATHS = {
   config: 'config',
@@ -20,16 +20,16 @@ const DEFAULT_PATHS = {
 };
 
 /**
- * Find the manifest file path (checks both codemachine.json and .codemachine.json)
+ * Find the manifest file path (checks both clawtutor.json and .clawtutor.json)
  */
 export function findManifestPath(importPath: string): string | null {
-  // Check for .codemachine.json first (local imports)
+  // Check for .clawtutor.json first (local imports)
   const localManifestPath = join(importPath, LOCAL_MANIFEST_FILENAME);
   if (existsSync(localManifestPath)) {
     return localManifestPath;
   }
 
-  // Check for codemachine.json (standard imports)
+  // Check for clawtutor.json (standard imports)
   const manifestPath = join(importPath, MANIFEST_FILENAME);
   if (existsSync(manifestPath)) {
     return manifestPath;

@@ -3,14 +3,14 @@
   "version": "0.1.0",
   "description": "Multi-Agent Workflow Orchestration.",
   "license": "Apache-2.0",
-  "author": "CodeMachine Contributors",
+  "author": "ClawTutor Contributors",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/moazbuilds/CodeMachine-CLI.git"
+    "url": "git+https://github.com/moazbuilds/ClawTutor-CLI.git"
   },
-  "homepage": "https://github.com/moazbuilds/CodeMachine-CLI#readme",
+  "homepage": "https://github.com/moazbuilds/ClawTutor-CLI#readme",
   "bugs": {
-    "url": "https://github.com/moazbuilds/CodeMachine-CLI/issues"
+    "url": "https://github.com/moazbuilds/ClawTutor-CLI/issues"
   },
   "keywords": [
     "ai",
@@ -40,11 +40,11 @@
     "bun": "1.3.3"
   },
   "optionalDependencies": {
-    "codemachine-linux-x64": "0.1.0",
-    "codemachine-linux-arm64": "0.1.0",
-    "codemachine-darwin-arm64": "0.1.0",
-    "codemachine-darwin-x64": "0.1.0",
-    "codemachine-windows-x64": "0.1.0"
+    "clawtutor-linux-x64": "0.1.0",
+    "clawtutor-linux-arm64": "0.1.0",
+    "clawtutor-darwin-arm64": "0.1.0",
+    "clawtutor-darwin-x64": "0.1.0",
+    "clawtutor-windows-x64": "0.1.0"
   },
   "scripts": {
     "_comment_dev": "Development: Run from source (no build needed)",

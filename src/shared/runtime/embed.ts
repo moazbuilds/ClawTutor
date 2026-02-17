@@ -18,7 +18,7 @@ type EmbeddedMetadata = {
 };
 
 function getResourcesBaseDir(): string {
-  const override = process.env.CODEMACHINE_RESOURCES_DIR;
+  const override = process.env.CLAWTUTOR_RESOURCES_DIR;
   if (override && override.length > 0) return override;
   return join(os.homedir(), '.clawtutor', 'resources');
 }
@@ -28,14 +28,14 @@ function setEnvVars(targetDir: string, force = false): void {
   if (force) {
     // For compiled binaries: force overwrite any stale env vars from dev sessions
     embedDebug('Force setting env vars to: %s', targetDir);
-    process.env.CODEMACHINE_PACKAGE_ROOT = targetDir;
-    process.env.CODEMACHINE_INSTALL_DIR = targetDir;
-    process.env.CODEMACHINE_PACKAGE_JSON = pkgJsonPath;
+    process.env.CLAWTUTOR_PACKAGE_ROOT = targetDir;
+    process.env.CLAWTUTOR_INSTALL_DIR = targetDir;
+    process.env.CLAWTUTOR_PACKAGE_JSON = pkgJsonPath;
   } else {
     // For dev mode: only set if not already set
-    process.env.CODEMACHINE_PACKAGE_ROOT ??= targetDir;
-    process.env.CODEMACHINE_INSTALL_DIR ??= targetDir;
-    process.env.CODEMACHINE_PACKAGE_JSON ??= pkgJsonPath;
+    process.env.CLAWTUTOR_PACKAGE_ROOT ??= targetDir;
+    process.env.CLAWTUTOR_INSTALL_DIR ??= targetDir;
+    process.env.CLAWTUTOR_PACKAGE_JSON ??= pkgJsonPath;
   }
 }
 
@@ -69,17 +69,17 @@ export async function ensure(): Promise<string | undefined> {
   embedDebug('Compiled binary detected (has %s embedded files)', embeddedFiles.length);
 
   // Log env vars for debugging
-  embedDebug('CODEMACHINE_PACKAGE_ROOT: %s', process.env.CODEMACHINE_PACKAGE_ROOT ?? '(not set)');
-  embedDebug('CODEMACHINE_INSTALL_DIR: %s', process.env.CODEMACHINE_INSTALL_DIR ?? '(not set)');
-  embedDebug('CODEMACHINE_PACKAGE_JSON: %s', process.env.CODEMACHINE_PACKAGE_JSON ?? '(not set)');
+  embedDebug('CLAWTUTOR_PACKAGE_ROOT: %s', process.env.CLAWTUTOR_PACKAGE_ROOT ?? '(not set)');
+  embedDebug('CLAWTUTOR_INSTALL_DIR: %s', process.env.CLAWTUTOR_INSTALL_DIR ?? '(not set)');
+  embedDebug('CLAWTUTOR_PACKAGE_JSON: %s', process.env.CLAWTUTOR_PACKAGE_JSON ?? '(not set)');
 
   // Compiled binary: check for existing installation via env vars
   // IMPORTANT: For compiled binaries, we should NOT use env vars that might be left over
   // from dev mode. Only check the resources directory.
   const existingRoot =
-    process.env.CODEMACHINE_PACKAGE_ROOT ??
-    process.env.CODEMACHINE_INSTALL_DIR ??
-    (process.env.CODEMACHINE_PACKAGE_JSON && dirname(process.env.CODEMACHINE_PACKAGE_JSON));
+    process.env.CLAWTUTOR_PACKAGE_ROOT ??
+    process.env.CLAWTUTOR_INSTALL_DIR ??
+    (process.env.CLAWTUTOR_PACKAGE_JSON && dirname(process.env.CLAWTUTOR_PACKAGE_JSON));
 
   embedDebug('existingRoot resolved to: %s', existingRoot ?? '(none)');
 
@@ -107,8 +107,8 @@ export async function ensure(): Promise<string | undefined> {
   );
   embedDebug('Found embedded package.json: %s', pkgFile ? pkgFile.name : '(not found)');
 
-  let version = process.env.CODEMACHINE_VERSION;
-  embedDebug('CODEMACHINE_VERSION env var: %s', version ?? '(not set)');
+  let version = process.env.CLAWTUTOR_VERSION;
+  embedDebug('CLAWTUTOR_VERSION env var: %s', version ?? '(not set)');
 
   if (!version && pkgFile) {
     try {

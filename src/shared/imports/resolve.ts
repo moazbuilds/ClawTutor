@@ -82,7 +82,7 @@ export function resolvePromptFolder(folderName: string, localRoot: string): stri
 
 /**
  * Resolve a workflow template path by checking imported packages first, then local
- * @param templateName - Template filename like "codemachine-one.workflow.js"
+ * @param templateName - Template filename like "clawtutor-one.workflow.js"
  * @param localRoot - Local root directory to check
  * @returns Absolute path to the template, or null if not found
  */

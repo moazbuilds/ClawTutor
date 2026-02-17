@@ -8,7 +8,7 @@ export const LEGACY_WORKSPACE_DIRNAME = '.clawtutor';
  * Resolve the project workspace root.
  * Preference order:
  * 1) `.clawtutor` if present
- * 2) `.codemachine` if present (legacy compatibility)
+ * 2) `.clawtutor` if present (legacy compatibility)
  * 3) `.clawtutor` as the default target for new workspaces
  */
 export function resolveWorkspaceRoot(cwd: string): string {

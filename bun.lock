@@ -3,7 +3,7 @@
   "configVersion": 0,
   "workspaces": {
     "": {
-      "name": "codemachine",
+      "name": "clawtutor",
       "dependencies": {
         "@clack/prompts": "^0.11.0",
         "@modelcontextprotocol/sdk": "^1.0.0",
@@ -36,11 +36,11 @@
         "typescript-eslint": "^8.49.0",
       },
       "optionalDependencies": {
-        "codemachine-darwin-arm64": "0.1.0",
-        "codemachine-darwin-x64": "0.1.0",
-        "codemachine-linux-arm64": "0.1.0",
-        "codemachine-linux-x64": "0.1.0",
-        "codemachine-windows-x64": "0.1.0",
+        "clawtutor-darwin-arm64": "0.1.0",
+        "clawtutor-darwin-x64": "0.1.0",
+        "clawtutor-linux-arm64": "0.1.0",
+        "clawtutor-linux-x64": "0.1.0",
+        "clawtutor-windows-x64": "0.1.0",
       },
     },
   },

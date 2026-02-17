@@ -65,7 +65,7 @@ export class CoordinatorService {
     let contextParentId: number | undefined;
 
     // 1. Check environment variable (workflow/agent context propagation)
-    const parentIdEnv = process.env.CODEMACHINE_PARENT_AGENT_ID;
+    const parentIdEnv = process.env.CLAWTUTOR_PARENT_AGENT_ID;
     if (parentIdEnv) {
       const parsed = parseInt(parentIdEnv, 10);
       if (!isNaN(parsed)) {
@@ -162,8 +162,8 @@ export class CoordinatorService {
     });
 
     console.log('\n' + chalk.dim('─'.repeat(60)));
-    console.log(chalk.dim(`View logs: codemachine agents logs <id>`));
-    console.log(chalk.dim(`List all agents: codemachine agents`));
+    console.log(chalk.dim(`View logs: clawtutor agents logs <id>`));
+    console.log(chalk.dim(`List all agents: clawtutor agents`));
     console.log('');
   }
 }

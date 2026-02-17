@@ -92,7 +92,7 @@ export async function writeSettings(
  * The router aggregates tools from all backend servers (workflow-signals,
  * agent-coordination, and user-defined servers) into a single MCP server.
  *
- * The router now runs as `codemachine mcp router` and uses process.cwd()
+ * The router now runs as `clawtutor mcp router` and uses process.cwd()
  * for the working directory, eliminating the need for path parameters.
  *
  * Claude uses: { command, args, env }

@@ -208,7 +208,7 @@ Store as:
 - `agents[n].loopSkip`
 
 **How module loops work:**
-- Module writes to `.codemachine/memory/directive.json`
+- Module writes to `.clawtutor/memory/directive.json`
 - `action: 'loop'` + reason → workflow goes back N steps
 - `action: 'stop'` + reason → workflow continues forward
 - This directive file is how the module controls workflow execution
@@ -270,7 +270,7 @@ Wait. Store as `subAgent.description`.
 | # | Type | Description |
 |---|------|-------------|
 | 1 | **Static** | Pre-defined prompt file (`mirrorPath`) - you define it now |
-| 2 | **Dynamic** | Generated at runtime by main agent in `.codemachine/agents/` |
+| 2 | **Dynamic** | Generated at runtime by main agent in `.clawtutor/agents/` |
 
 Enter **1** or **2**:"
 
@@ -394,7 +394,7 @@ Main agents can invoke sub-agents using MCP tools or CLI commands.
 
 **CLI Syntax:**
 ```
-codemachine run \"agent-id[options] 'prompt'\"
+clawtutor run \"agent-id[options] 'prompt'\"
 ```
 
 **Options:**
@@ -414,16 +414,16 @@ codemachine run \"agent-id[options] 'prompt'\"
 **Examples:**
 ```bash
 # Single agent
-codemachine run \"code-generator 'Build login feature'\"
+clawtutor run \"code-generator 'Build login feature'\"
 
 # With input file
-codemachine run \"analyst[input:requirements.md] 'analyze'\"
+clawtutor run \"analyst[input:requirements.md] 'analyze'\"
 
 # Parallel execution
-codemachine run \"frontend 'UI' & backend 'API'\"
+clawtutor run \"frontend 'UI' & backend 'API'\"
 
 # Sequential then parallel
-codemachine run \"db 'setup' && frontend & backend\"
+clawtutor run \"db 'setup' && frontend & backend\"
 ```
 
 **Note:** Include MCP tools documentation in main agent's prompt if it needs to call sub-agents."
@@ -1050,7 +1050,7 @@ Which AI engine should this agent use?
 **Fallback:** If no engine set or not authenticated, falls back to `opencode` free plan.
 
 We're adding engines constantly! Request new engines at:
-https://github.com/moazbuilds/CodeMachine-CLI/issues
+https://github.com/moazbuilds/ClawTutor-CLI/issues
 
 Enter engine ID (or **?** for author's recommendations):"
 
@@ -1058,7 +1058,7 @@ Wait for response.
 
 **If user enters ?:**
 
-"**Engine Recommendations (from CodeMachine author):**
+"**Engine Recommendations (from ClawTutor author):**
 
 | Engine | Verdict |
 |--------|---------|
@@ -1401,7 +1401,7 @@ module.exports = [
     id: '\{dynamicSubAgent.id\}',
     name: '\{dynamicSubAgent.name\}',
     description: '\{dynamicSubAgent.description\}',
-    // No mirrorPath - will be generated in .codemachine/agents/
+    // No mirrorPath - will be generated in .clawtutor/agents/
   \},
 ];
 ```
@@ -1657,13 +1657,13 @@ module.exports = [
 **Note:** Prompt files will be created in Step 04.
 **Note:** Controller prompt file will also be created in Step 04.
 **Note:** Static sub-agent prompt files will be created in Step 04.
-**Note:** Dynamic sub-agents have no prompt files - main agent generates them at runtime in `.codemachine/agents/`"
+**Note:** Dynamic sub-agents have no prompt files - main agent generates them at runtime in `.clawtutor/agents/`"
 
 ## Step 3: APPEND to Plan File
 
 **On User Confirmation:**
 
-1. **Read** the plan file at `.codemachine/workflow-plans/\{workflow_name\}-plan.md`
+1. **Read** the plan file at `.clawtutor/workflow-plans/\{workflow_name\}-plan.md`
 
 2. **Append step-03 XML** before the closing `</workflow-plan>` tag:
 
@@ -1793,7 +1793,7 @@ module.exports = [
       <dynamic-config>
         <generation-instructions>\{what main agent should know about generating this sub-agent\}</generation-instructions>
         <trigger-condition>\{when main agent should generate/use this sub-agent\}</trigger-condition>
-        <runtime-path>.codemachine/agents/\{subAgent.id\}.md</runtime-path>
+        <runtime-path>.clawtutor/agents/\{subAgent.id\}.md</runtime-path>
       </dynamic-config>
 
     </sub-agent>

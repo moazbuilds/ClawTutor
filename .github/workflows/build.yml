@@ -15,17 +15,17 @@ jobs:
       matrix:
         include:
           - os: ubuntu-latest
-            slug: codemachine-linux-x64
+            slug: clawtutor-linux-x64
           - os: ubuntu-latest
-            slug: codemachine-linux-arm64
+            slug: clawtutor-linux-arm64
             target: linux-arm64
           - os: macos-14
-            slug: codemachine-darwin-arm64
+            slug: clawtutor-darwin-arm64
           - os: macos-14
-            slug: codemachine-darwin-x64
+            slug: clawtutor-darwin-x64
             target: darwin-x64
           - os: windows-latest
-            slug: codemachine-windows-x64
+            slug: clawtutor-windows-x64
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -65,14 +65,14 @@ jobs:
         if: runner.os != 'Windows' && matrix.target == ''
         continue-on-error: true
         run: |
-          chmod +x binaries/${{ matrix.slug }}/codemachine
-          binaries/${{ matrix.slug }}/codemachine --version || echo "⚠️  Binary execution test skipped (may require dependencies)"
+          chmod +x binaries/${{ matrix.slug }}/clawtutor
+          binaries/${{ matrix.slug }}/clawtutor --version || echo "⚠️  Binary execution test skipped (may require dependencies)"
 
       - name: Test binary execution (Windows)
         if: runner.os == 'Windows'
         continue-on-error: true
         run: |
-          binaries/${{ matrix.slug }}/codemachine.exe --version
+          binaries/${{ matrix.slug }}/clawtutor.exe --version
           if ($LASTEXITCODE -ne 0) { Write-Host "⚠️  Binary execution test skipped (may require dependencies)" }
 
       - name: Upload binary package
@@ -85,16 +85,16 @@ jobs:
         if: matrix.target == ''
         shell: bash
         run: |
-          chmod +x binaries/${{ matrix.slug }}/codemachine* || true
-          binaries/${{ matrix.slug }}/codemachine --version
+          chmod +x binaries/${{ matrix.slug }}/clawtutor* || true
+          binaries/${{ matrix.slug }}/clawtutor --version
 
       - name: Verify cross-compiled binary exists
         if: matrix.target != ''
         shell: bash
         run: |
-          if [ -f "binaries/${{ matrix.slug }}/codemachine" ]; then
-            echo "✅ Cross-compiled binary exists: binaries/${{ matrix.slug }}/codemachine"
-            file binaries/${{ matrix.slug }}/codemachine
+          if [ -f "binaries/${{ matrix.slug }}/clawtutor" ]; then
+            echo "✅ Cross-compiled binary exists: binaries/${{ matrix.slug }}/clawtutor"
+            file binaries/${{ matrix.slug }}/clawtutor
           else
             echo "❌ Binary not found"
             exit 1

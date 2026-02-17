@@ -96,20 +96,20 @@ async function registerEngineRunCommands(program: Command): Promise<void> {
  * Example usage:
  *
  * Single agent (simple):
- * codemachine run "code-generator 'Build login feature'"
+ * clawtutor run "code-generator 'Build login feature'"
  *
  * Single agent (enhanced with input files):
- * codemachine run "system-analyst[input:.clawtutor/agents/system-analyst.md,tail:100] 'analyze architecture'"
+ * clawtutor run "system-analyst[input:.clawtutor/agents/system-analyst.md,tail:100] 'analyze architecture'"
  *
  * Single agent (multiple inputs, no prompt):
- * codemachine run "arch-writer[input:file1.md;file2.md;file3.md]"
+ * clawtutor run "arch-writer[input:file1.md;file2.md;file3.md]"
  *
  * Orchestration (parallel):
- * codemachine run "frontend[tail:50] 'UI' & backend[tail:50] 'API' & db[tail:30] 'schema'"
+ * clawtutor run "frontend[tail:50] 'UI' & backend[tail:50] 'API' & db[tail:30] 'schema'"
  *
  * Orchestration (sequential):
- * codemachine run "db 'Setup schema' && backend 'Create models' && api 'Build endpoints'"
+ * clawtutor run "db 'Setup schema' && backend 'Create models' && api 'Build endpoints'"
  *
  * Orchestration (mixed):
- * codemachine run "db[tail:50] 'setup' && frontend[input:design.md,tail:100] & backend[input:api-spec.md,tail:100]"
+ * clawtutor run "db[tail:50] 'setup' && frontend[input:design.md,tail:100] & backend[input:api-spec.md,tail:100]"
  */

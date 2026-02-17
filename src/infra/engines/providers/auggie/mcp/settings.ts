@@ -20,7 +20,7 @@ import { getRouterConfig, ROUTER_ID } from '../../../../mcp/router/config.js';
 
 /**
  * Resolve AUGGIE_HOME directory
- * Uses CODEMACHINE_AUGGIE_HOME env var or defaults to ~/.clawtutor/auggie
+ * Uses CLAWTUTOR_AUGGIE_HOME env var or defaults to ~/.clawtutor/auggie
  */
 export function resolveAuggieHome(): string {
   if (process.env[ENV.AUGGIE_HOME]) {
@@ -93,7 +93,7 @@ export async function writeSettings(settingsPath: string, settings: AuggieSettin
 /**
  * Get MCP router configuration for Auggie format
  *
- * The router now runs as `codemachine mcp router` and uses process.cwd()
+ * The router now runs as `clawtutor mcp router` and uses process.cwd()
  * for the working directory, eliminating the need for path parameters.
  */
 export function getMCPRouterConfig(): MCPServerConfig {
@@ -122,7 +122,7 @@ export function addMCPServers(settings: AuggieSettings): AuggieSettings {
 }
 
 /**
- * Remove codemachine MCP router from settings
+ * Remove clawtutor MCP router from settings
  */
 export function removeMCPServers(settings: AuggieSettings): AuggieSettings {
   if (!settings.mcpServers) {
@@ -138,7 +138,7 @@ export function removeMCPServers(settings: AuggieSettings): AuggieSettings {
 }
 
 /**
- * Check if settings contain codemachine MCP router
+ * Check if settings contain clawtutor MCP router
  */
 export function hasMCPServers(settings: AuggieSettings): boolean {
   return !!(settings.mcpServers?.[ROUTER_ID]);

@@ -18,7 +18,7 @@ export function ErrorComponent(props: ErrorComponentProps) {
   const [copied, setCopied] = createSignal(false)
 
   const copyError = () => {
-    const errorText = `CodeMachine Error:\n\n${props.error.stack || props.error.message}`
+    const errorText = `ClawTutor Error:\n\n${props.error.stack || props.error.message}`
     try {
       if (typeof navigator !== "undefined" && "clipboard" in navigator) {
         navigator.clipboard.writeText(errorText).then(() => setCopied(true))

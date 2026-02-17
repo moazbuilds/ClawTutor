@@ -2,7 +2,7 @@
  * MCP Router Configuration
  *
  * Configuration for the MCP router and backend servers.
- * The router now runs as part of the codemachine binary.
+ * The router now runs as part of the clawtutor binary.
  */
 
 import * as path from 'path';
@@ -20,8 +20,8 @@ import { handleAgentCoordinationTool } from '../servers/agent-coordination/handl
 // SERVER METADATA
 // ============================================================================
 
-export const ROUTER_ID = 'codemachine';
-export const ROUTER_NAME = 'CodeMachine MCP Router';
+export const ROUTER_ID = 'clawtutor';
+export const ROUTER_NAME = 'ClawTutor MCP Router';
 
 // ============================================================================
 // BACKEND SERVER CONFIG TYPES
@@ -61,13 +61,13 @@ export interface InProcessBackendConfig {
 /**
  * Get the MCP config for the router (used by engine adapters)
  *
- * The router now runs as `codemachine mcp router` instead of spawning
+ * The router now runs as `clawtutor mcp router` instead of spawning
  * a separate bun process. This eliminates path resolution issues and
  * external dependencies.
  */
 export function getRouterConfig(): MCPServerConfig {
   const config: MCPServerConfig = {
-    command: 'codemachine',
+    command: 'clawtutor',
     args: ['mcp', 'router'],
   };
 
@@ -86,7 +86,7 @@ export function getRouterConfig(): MCPServerConfig {
 /**
  * Load built-in backend server configurations
  *
- * These are the MCP servers that ship with codemachine.
+ * These are the MCP servers that ship with clawtutor.
  * They run in-process (no child processes needed).
  */
 export function loadBuiltinBackends(): InProcessBackendConfig[] {
@@ -108,7 +108,7 @@ export function loadBuiltinBackends(): InProcessBackendConfig[] {
  * Load user-defined MCP servers from config file
  *
  * Looks for servers in:
- * - ~/.config/codemachine/mcp-servers.json (user global)
+ * - ~/.config/clawtutor/mcp-servers.json (user global)
  * - .clawtutor/mcp-servers.json (project local)
  *
  * Format:
@@ -126,7 +126,7 @@ async function loadUserBackends(workingDir: string): Promise<BackendServerConfig
   const backends: BackendServerConfig[] = [];
 
   // User global config
-  const userConfigPath = path.join(homedir(), '.config', 'codemachine', 'mcp-servers.json');
+  const userConfigPath = path.join(homedir(), '.config', 'clawtutor', 'mcp-servers.json');
 
   // Project local config
   const projectConfigPath = path.join(workingDir, '.clawtutor', 'mcp-servers.json');

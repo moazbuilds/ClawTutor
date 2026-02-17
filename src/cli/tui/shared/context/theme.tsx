@@ -2,7 +2,7 @@
 import { RGBA } from "@opentui/core"
 import { createMemo, createSignal } from "solid-js"
 import { createSimpleContext } from "./helper"
-import codemachineTheme from "./theme/codemachine.json" with { type: "json" }
+import clawtutorTheme from "./theme/clawtutor.json" with { type: "json" }
 
 export type Theme = {
   primary: RGBA
@@ -62,7 +62,7 @@ export const { use: useTheme, provider: ThemeProvider } = createSimpleContext({
   init: (props: { mode: "dark" | "light" }) => {
     // Use signal so theme can be changed dynamically
     const [mode, setMode] = createSignal(props.mode)
-    const theme = createMemo(() => resolveTheme(codemachineTheme, mode()))
+    const theme = createMemo(() => resolveTheme(clawtutorTheme, mode()))
 
     return {
       get theme() {

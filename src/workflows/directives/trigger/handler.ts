@@ -27,7 +27,7 @@ export async function handleTriggerLogic(
     cwd,
   });
 
-  if (process.env.CODEMACHINE_DEBUG_TRIGGERS === '1') {
+  if (process.env.CLAWTUTOR_DEBUG_TRIGGERS === '1') {
     const tail = output.trim().split(/\n/).slice(-1)[0] ?? '';
     const debugMsg = `[trigger] step=${step.agentName} behavior=${JSON.stringify(step.module?.behavior)} lastLine=${tail}`;
     emitter?.logMessage(step.agentId, debugMsg);

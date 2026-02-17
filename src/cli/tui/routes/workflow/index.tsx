@@ -26,7 +26,7 @@ export function Workflow(props: WorkflowProps) {
   }
 
   const getCwd = () => {
-    const cwd = process.env.CODEMACHINE_CWD || process.cwd()
+    const cwd = process.env.CLAWTUTOR_CWD || process.cwd()
     return cwd.replace(homedir(), "~")
   }
 

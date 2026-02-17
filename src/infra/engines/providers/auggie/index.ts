@@ -1,7 +1,7 @@
 /**
  * Auggie Engine
  *
- * Provides Auggie CLI (Augment Code) integration with CodeMachine's engine runtime.
+ * Provides Auggie CLI (Augment Code) integration with ClawTutor's engine runtime.
  */
 
 import type { EngineModule } from '../../core/base.js';

@@ -63,7 +63,7 @@ export interface HandleCrashRecoveryOptions {
   uniqueAgentId: string;
   /** Working directory */
   cwd: string;
-  /** .codemachine root */
+  /** .clawtutor root */
   cmRoot: string;
   /** Event emitter */
   emitter: WorkflowEventEmitter;

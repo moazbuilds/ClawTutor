@@ -30,7 +30,7 @@ export const CLI_ROOT_CANDIDATES = Array.from(
 );
 
 export const AGENT_MODULE_FILENAMES = ['main.agents.js', 'sub.agents.js', 'agents.js'];
-export const SHOULD_DEBUG_BOOTSTRAP = process.env.CODEMACHINE_DEBUG_BOOTSTRAP === '1';
+export const SHOULD_DEBUG_BOOTSTRAP = process.env.CLAWTUTOR_DEBUG_BOOTSTRAP === '1';
 
 export function debugLog(...args: unknown[]): void {
   if (SHOULD_DEBUG_BOOTSTRAP) {

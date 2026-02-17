@@ -39,7 +39,7 @@ function resolveVibeHome(options?: MistralAuthOptions): string {
   if (process.env[ENV.MISTRAL_HOME]) {
     return expandHomeDir(process.env[ENV.MISTRAL_HOME]!);
   }
-  // default under codemachine
+  // default under clawtutor
   return path.join(homedir(), '.clawtutor', 'vibe');
 }
 
@@ -67,14 +67,14 @@ async function promptForApiKey(): Promise<string | null> {
 
 /**
  * Gets paths to all Mistral-related files that need to be cleaned up
- * CodeMachine should not manage Vibe's credentials - it only checks if they exist.
+ * ClawTutor should not manage Vibe's credentials - it only checks if they exist.
  */
 export function getMistralAuthPaths(_configDir: string): string[] {
-  // Only return CodeMachine-specific paths, not Vibe's actual credentials
+  // Only return ClawTutor-specific paths, not Vibe's actual credentials
   // Mistral Vibe manages its own credentials at ~/.vibe/.env
   return [
-    // Add any CodeMachine-specific auth files here if needed in the future
-    // For now, we don't manage any CodeMachine-specific Mistral auth files
+    // Add any ClawTutor-specific auth files here if needed in the future
+    // For now, we don't manage any ClawTutor-specific Mistral auth files
   ];
 }
 
@@ -175,7 +175,7 @@ export async function ensureAuth(options?: MistralAuthOptions): Promise<boolean>
 
 /**
  * Clears all Mistral authentication data
- * CodeMachine does not manage Vibe's credentials - it only checks if they exist.
+ * ClawTutor does not manage Vibe's credentials - it only checks if they exist.
  * To clear Vibe's credentials, users should do so directly via the Vibe CLI or manually.
  */
 export async function clearAuth(options?: MistralAuthOptions): Promise<void> {
@@ -183,7 +183,7 @@ export async function clearAuth(options?: MistralAuthOptions): Promise<void> {
   const vibeHome = resolveVibeHome(options);
   const authPaths = getMistralAuthPaths(configDir);
 
-  // Remove CodeMachine-specific auth files (if any)
+  // Remove ClawTutor-specific auth files (if any)
   await cleanupAuthFiles(authPaths);
 
   // Also remove the Vibe credentials file to fully sign out

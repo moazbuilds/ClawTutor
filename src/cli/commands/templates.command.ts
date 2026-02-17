@@ -30,7 +30,7 @@ export interface TemplateChoice extends SelectionChoice<string> {
 
 async function handleTemplateSelectionSuccess(template: WorkflowTemplate, templateFilePath: string): Promise<void> {
   const templateFileName = path.basename(templateFilePath);
-  const cwd = process.env.CODEMACHINE_CWD || process.cwd();
+  const cwd = process.env.CLAWTUTOR_CWD || process.cwd();
   const cmRoot = resolveWorkspaceRoot(cwd);
   const agentsDir = path.join(cmRoot, 'agents');
 

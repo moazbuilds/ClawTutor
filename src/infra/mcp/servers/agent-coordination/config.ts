@@ -28,7 +28,7 @@ export const SERVER_NAME = 'Agent Coordination';
  *
  * When running from a compiled binary, __dirname resolves to Bun's virtual
  * filesystem (/$bunfs/...) which doesn't exist on disk. In that case, we
- * must use CODEMACHINE_PACKAGE_ROOT to get the real filesystem path.
+ * must use CLAWTUTOR_PACKAGE_ROOT to get the real filesystem path.
  */
 export function getServerPath(): string {
   const isCompiledBinary = __dirname.startsWith('/$bunfs');
@@ -36,10 +36,10 @@ export function getServerPath(): string {
   debug('[MCP:agent-coordination] Resolving server path (compiled: %s)', isCompiledBinary);
 
   if (isCompiledBinary) {
-    const packageRoot = process.env.CODEMACHINE_PACKAGE_ROOT;
+    const packageRoot = process.env.CLAWTUTOR_PACKAGE_ROOT;
     if (!packageRoot) {
       throw new MCPPathError(
-        'CODEMACHINE_PACKAGE_ROOT must be set when running from compiled binary'
+        'CLAWTUTOR_PACKAGE_ROOT must be set when running from compiled binary'
       );
     }
     const serverPath = path.join(

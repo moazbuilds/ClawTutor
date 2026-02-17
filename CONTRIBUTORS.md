@@ -1,23 +1,23 @@
 # Contributors
 
-Special thanks to the following contributors who have helped make CodeMachine better:
+Special thanks to the following contributors who have helped make ClawTutor better:
 
 ## Core Contributors
 
 ### [Bahy Ali](https://github.com/bahyali)
-Architect of the original workflow system and core orchestration concepts. His deep expertise and guidance were instrumental in shaping CodeMachine's foundation.
+Architect of the original workflow system and core orchestration concepts. His deep expertise and guidance were instrumental in shaping ClawTutor's foundation.
 
 ### [Adinda Praditya](https://github.com/apraditya)
 Added CCR (Claude Code Router) engine support, removing a major limitation by enabling users to leverage AI capabilities beyond subscription-based services.
 
 ### [SoyHub](https://github.com/SoyHub)
-Enhanced the UI system and contributed innovative ideas during brainstorming sessions that helped strengthen CodeMachine's capabilities.
+Enhanced the UI system and contributed innovative ideas during brainstorming sessions that helped strengthen ClawTutor's capabilities.
 
 ### [TheMightyDman](https://github.com/TheMightyDman)
-Added OpenCode CLI engine integration, which brings support for multiple AI providers (Anthropic, OpenAI, Google, and more) to CodeMachine. An enthusiastic and active contributor to the project.
+Added OpenCode CLI engine integration, which brings support for multiple AI providers (Anthropic, OpenAI, Google, and more) to ClawTutor. An enthusiastic and active contributor to the project.
 
 ### [AlexFigures](https://github.com/AlexFigures)
-Added Auggie CLI engine support, expanding CodeMachine's capabilities with another powerful AI engine option.
+Added Auggie CLI engine support, expanding ClawTutor's capabilities with another powerful AI engine option.
 
 ### [Hady Walied](https://github.com/hadywalied)
 Added MKDocs integration, improving the project's documentation infrastructure.
@@ -26,7 +26,7 @@ Added MKDocs integration, improving the project's documentation infrastructure.
 Reported and fixed a critical bug in the OpenCode engine integration, helping improve stability and reliability.
 
 ### [Srikanth](https://github.com/ghostincli)
-Added Mistral Vibe engine support, expanding CodeMachine's integration with Mistral's AI capabilities.
+Added Mistral Vibe engine support, expanding ClawTutor's integration with Mistral's AI capabilities.
 
 ## Other Contributors
 

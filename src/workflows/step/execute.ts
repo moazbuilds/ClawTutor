@@ -136,8 +136,8 @@ export async function executeStep(
   // Use environment variable or default to 30 minutes (1800000ms)
   const timeout =
     options.timeout ??
-    (process.env.CODEMACHINE_AGENT_TIMEOUT
-      ? Number.parseInt(process.env.CODEMACHINE_AGENT_TIMEOUT, 10)
+    (process.env.CLAWTUTOR_AGENT_TIMEOUT
+      ? Number.parseInt(process.env.CLAWTUTOR_AGENT_TIMEOUT, 10)
       : 1800000);
   debug(`[step/execute] timeout=${timeout}ms`);
 

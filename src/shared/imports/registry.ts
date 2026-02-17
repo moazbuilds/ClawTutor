@@ -1,5 +1,5 @@
 /**
- * Registry management for installed CodeMachine imports
+ * Registry management for installed ClawTutor imports
  */
 
 import { existsSync, readFileSync, writeFileSync } from 'node:fs';

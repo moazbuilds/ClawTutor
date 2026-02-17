@@ -10,12 +10,12 @@ import type { Tool } from '@modelcontextprotocol/sdk/types.js';
 /**
  * Tool: run_agents
  *
- * Execute codemachine agents using coordination script syntax.
+ * Execute clawtutor agents using coordination script syntax.
  * Supports single agents, parallel execution (&), and sequential execution (&&).
  */
 export const runAgentsTool: Tool = {
   name: 'run_agents',
-  description: `Execute codemachine agent(s) using coordination script syntax.
+  description: `Execute clawtutor agent(s) using coordination script syntax.
 
 Script Examples:
 - Single agent: "code-generator 'Build login feature'"
@@ -52,11 +52,11 @@ Long-running agents may take several minutes to complete.`,
 /**
  * Tool: get_agent_status
  *
- * Query status of codemachine agents by ID, name, or status filters.
+ * Query status of clawtutor agents by ID, name, or status filters.
  */
 export const getAgentStatusTool: Tool = {
   name: 'get_agent_status',
-  description: `Query status of codemachine agents.
+  description: `Query status of clawtutor agents.
 
 Use to check on specific agents by ID, filter by name/status, or get recent agent history.
 Returns agent records including status, timing, telemetry, and error information.`,
@@ -114,7 +114,7 @@ Returns agent records for all agents with status 'running'.`,
  */
 export const listAvailableAgentsTool: Tool = {
   name: 'list_available_agents',
-  description: `List all available codemachine agents that can be executed.
+  description: `List all available clawtutor agents that can be executed.
 
 Returns the catalog of agent definitions discovered from:
 - Main agent configs (main.agents.js)

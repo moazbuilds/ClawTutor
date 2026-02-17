@@ -74,7 +74,7 @@ export async function writeConfig(configPath: string, content: string): Promise<
  * Uses getRouterConfig() as single source of truth, converts to TOML format.
  * Codex uses TOML format with: command, args, startup_timeout_sec, env
  *
- * The router now runs as `codemachine mcp router` and uses process.cwd()
+ * The router now runs as `clawtutor mcp router` and uses process.cwd()
  * for the working directory, eliminating the need for path parameters.
  */
 export function generateRouterSection(): string {
@@ -108,7 +108,7 @@ export function generateAllMCPSections(): string {
 }
 
 /**
- * Remove codemachine MCP router section from TOML content
+ * Remove clawtutor MCP router section from TOML content
  */
 export function removeAllMCPSections(content: string): string {
   const lines = content.split('\n');
@@ -140,7 +140,7 @@ export function removeAllMCPSections(content: string): string {
 }
 
 /**
- * Check if config contains codemachine MCP router section
+ * Check if config contains clawtutor MCP router section
  */
 export function hasMCPSections(content: string): boolean {
   return content.includes(`[mcp_servers."${ROUTER_ID}"]`);

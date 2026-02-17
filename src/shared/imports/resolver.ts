@@ -1,5 +1,5 @@
 /**
- * Source resolution for CodeMachine imports
+ * Source resolution for ClawTutor imports
  * Handles: short names, owner/repo, full URLs, local paths
  */
 
@@ -9,8 +9,8 @@ import type { ResolvedSource } from './types.js';
 
 const GITHUB_BASE = 'https://github.com';
 const GITHUB_API_BASE = 'https://api.github.com';
-const LOCAL_MANIFEST_FILENAME = '.codemachine.json';
-const STANDARD_MANIFEST_FILENAME = 'codemachine.json';
+const LOCAL_MANIFEST_FILENAME = '.clawtutor.json';
+const STANDARD_MANIFEST_FILENAME = 'clawtutor.json';
 
 /**
  * Check if a directory has a valid manifest file
@@ -24,7 +24,7 @@ function hasManifestFile(dirPath: string): boolean {
  * Resolve an import source string to a clone-able URL
  *
  * Supported formats:
- * - Local path: `/path/to/folder` or `./relative/path` (with .codemachine.json)
+ * - Local path: `/path/to/folder` or `./relative/path` (with .clawtutor.json)
  * - Short name: `package-name` (searches GitHub)
  * - Owner/repo: `user/repo` (assumes GitHub)
  * - Full URL: `github.com/user/repo` or `https://...`
@@ -81,7 +81,7 @@ export async function resolveSource(input: string): Promise<ResolvedSource> {
 }
 
 /**
- * Resolve a local folder path with .codemachine.json or codemachine.json
+ * Resolve a local folder path with .clawtutor.json or clawtutor.json
  */
 function resolveLocalPath(path: string): ResolvedSource | null {
   // Handle absolute paths
@@ -189,7 +189,7 @@ async function resolveShortName(name: string): Promise<ResolvedSource> {
     const response = await fetch(searchUrl, {
       headers: {
         Accept: 'application/vnd.github.v3+json',
-        'User-Agent': 'CodeMachine-CLI',
+        'User-Agent': 'ClawTutor-CLI',
       },
     });
 

@@ -13,9 +13,9 @@
  * - Support for user-defined servers via config files
  *
  * Usage:
- *   codemachine mcp router
+ *   clawtutor mcp router
  *
- * The router runs as part of the codemachine binary, eliminating the need
+ * The router runs as part of the clawtutor binary, eliminating the need
  * for bun or path resolution for built-in MCP servers.
  */
 
@@ -166,7 +166,7 @@ class MCPRouter {
 /**
  * Start the MCP router server
  *
- * Exported for CLI to call via `codemachine mcp router`.
+ * Exported for CLI to call via `clawtutor mcp router`.
  * Uses process.cwd() as the working directory.
  */
 export async function startRouter(): Promise<void> {

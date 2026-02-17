@@ -268,7 +268,7 @@ Remove previous agent output from list.
 Since agents are isolated and can't see each other's work, we need to define what this agent outputs so the next agent can receive it.
 
 *[If agent produces artifacts/plans/code:]*
-I recommend: `.codemachine/artifacts/\{agent.id\}-output.md`
+I recommend: `.clawtutor/artifacts/\{agent.id\}-output.md`
 
 *[If Q&A/interactive agent that only collects info:]*
 This agent collects user input - it may not need a file output if the next agent can access conversation context.
@@ -522,7 +522,7 @@ You can invoke the following sub-agents during execution:
 
 **Option 2: CLI Syntax**
 ```bash
-codemachine run "\{subAgent.id\}[options] 'your task'"
+clawtutor run "\{subAgent.id\}[options] 'your task'"
 ```
 
 **Options:**
@@ -539,7 +539,7 @@ codemachine run "\{subAgent.id\}[options] 'your task'"
 ### Dynamic Sub-Agent Generation
 
 For dynamic sub-agents, create the prompt file at runtime:
-1. Write prompt to `.codemachine/agents/\{subAgent.id\}.md`
+1. Write prompt to `.clawtutor/agents/\{subAgent.id\}.md`
 2. Then invoke the sub-agent using MCP or CLI
 \{end if\}
 
@@ -550,7 +550,7 @@ For dynamic sub-agents, create the prompt file at runtime:
 \{agent.output\}
 
 \{if outputs to next agent\}
-**Write output to:** `.codemachine/artifacts/\{agent.id\}-output-*.md`
+**Write output to:** `.clawtutor/artifacts/\{agent.id\}-output-*.md`
 \{end if\}
 
 ## SUCCESS CRITERIA
@@ -645,7 +645,7 @@ Press **Enter** to start."
 ## OUTPUT
 
 \{if outputs to next agent\}
-At the end of Step \{lastStep\}, write output to `.codemachine/artifacts/\{agent.id\}-output.md`
+At the end of Step \{lastStep\}, write output to `.clawtutor/artifacts/\{agent.id\}-output.md`
 \{end if\}
 
 ## RULES
@@ -837,7 +837,7 @@ From Step 03:
 
 **⚠️ CRITICAL: Directive Writing**
 
-Modules control workflow execution by writing to `.codemachine/memory/directive.json`. This is how the module tells the system what to do next.
+Modules control workflow execution by writing to `.clawtutor/memory/directive.json`. This is how the module tells the system what to do next.
 
 **The directive file format:**
 ```json
@@ -975,7 +975,7 @@ Validate the work from previous agents and decide whether to:
 
 ## ⚠️ DIRECTIVE WRITING (CRITICAL)
 
-**You MUST write to `.codemachine/memory/directive.json` at the end of your execution.**
+**You MUST write to `.clawtutor/memory/directive.json` at the end of your execution.**
 
 **If validation PASSES:**
 ```json
@@ -1140,7 +1140,7 @@ Wait for response.
 | \{subAgent.name\} | \{subAgent.parentAgent\} | sub-agents/\{subAgent.id\}.md |
 \{end for\}
 
-**Note:** Dynamic sub-agents do not have pre-defined prompts - they are generated at runtime by their parent agent in `.codemachine/agents/`."
+**Note:** Dynamic sub-agents do not have pre-defined prompts - they are generated at runtime by their parent agent in `.clawtutor/agents/`."
 
 ---
 
@@ -1356,7 +1356,7 @@ description: 'Mandatory system rules for all agents in the \{Workflow Name\} wor
 
 # SYSTEM RULES (READ BEFORE ANYTHING ELSE)
 
-You are an agent inside the **CodeMachine Workflow System**. You do NOT control the flow. The system does.
+You are an agent inside the **ClawTutor Workflow System**. You do NOT control the flow. The system does.
 
 ## HOW THE SYSTEM WORKS
 
@@ -1553,7 +1553,7 @@ For each shared:
 
 **On User Confirmation:**
 
-1. **Read** the plan file at `.codemachine/workflow-plans/\{workflow_name\}-plan.md`
+1. **Read** the plan file at `.clawtutor/workflow-plans/\{workflow_name\}-plan.md`
 
 2. **Append step-04 XML** before the closing `</workflow-plan>` tag:
 

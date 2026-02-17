@@ -48,11 +48,11 @@ description: "Setup check, workflow name, tracks, and condition groups"
 
 ### 1. Setup Check
 
-Check the CodeMachine imports folder and registry file.
+Check the ClawTutor imports folder and registry file.
 
-**Location:** `~/.codemachine/imports/`
+**Location:** `~/.clawtutor/imports/`
 
-**Registry file:** `~/.codemachine/imports/registry.json`
+**Registry file:** `~/.clawtutor/imports/registry.json`
 
 **Registry structure:**
 ```json
@@ -62,8 +62,8 @@ Check the CodeMachine imports folder and registry file.
     "workflow-name": {
       "name": "workflow-name",
       "version": "1.0.0",
-      "source": "workflow-name-codemachine",
-      "path": "/home/user/.codemachine/imports/workflow-name-codemachine",
+      "source": "workflow-name-clawtutor",
+      "path": "/home/user/.clawtutor/imports/workflow-name-clawtutor",
       "installedAt": "ISO-timestamp",
       "resolvedPaths": { ... }
     }
@@ -76,13 +76,13 @@ Check the CodeMachine imports folder and registry file.
 **Scenario A: Imports folder doesn't exist**
 
 Actions:
-1. Create `~/.codemachine/imports/` directory
+1. Create `~/.clawtutor/imports/` directory
 2. Create `registry.json` with: `{ "schemaVersion": 1, "imports": {} }`
 
 Display:
-"Setting up your CodeMachine imports folder...
+"Setting up your ClawTutor imports folder...
 
-✓ Created ~/.codemachine/imports/
+✓ Created ~/.clawtutor/imports/
 ✓ Created registry.json
 
 You're all set! Let's create your first workflow."
@@ -94,7 +94,7 @@ Store `existing_workflows: []` and proceed to Section 2.
 **Scenario B: Imports folder exists, registry has workflows**
 
 Actions:
-1. Read `~/.codemachine/imports/registry.json`
+1. Read `~/.clawtutor/imports/registry.json`
 2. Parse and extract workflow names from the `imports` object keys
 3. Store in `existing_workflows` array
 
@@ -179,7 +179,7 @@ Based on your concept, here are some options:
 | 4 | `\{suggested-name-4\}` | \{one-line description of what it does\} |
 
 **Your workflow will be created at:**
-`~/.codemachine/imports/\{name\}-codemachine/`
+`~/.clawtutor/imports/\{name\}-clawtutor/`
 
 Enter **1-4** to select, or type your own name:"
 
@@ -236,7 +236,7 @@ Wait for response. Store as `workflow_description`.
 "**Confirmed:**
 - **Name:** `\{workflow_name\}`
 - **Description:** \{workflow_description\}
-- **Location:** `~/.codemachine/imports/\{workflow_name\}-codemachine/`
+- **Location:** `~/.clawtutor/imports/\{workflow_name\}-clawtutor/`
 
 Let's continue!"
 
@@ -414,7 +414,7 @@ When tracks and/or conditions are configured, Ali must remember these built-in p
 |-------------|------------------|---------------|
 | `\{selected_track\}` | The track ID selected by user at workflow start | `javascript`, `python`, `create` |
 | `\{selected_conditions\}` | Comma-separated list of selected condition IDs | `auth, database`, `oauth` |
-| `\{project_name\}` | The project name from CodeMachine | `my-app` |
+| `\{project_name\}` | The project name from ClawTutor | `my-app` |
 
 **Why this matters:**
 1. **Controller agents** need to know what track/conditions were selected to respond appropriately
@@ -668,7 +668,7 @@ I'm Ali, and I'm running in **Manual Mode** right now!
 - You press Enter to proceed to the next step
 - The workflow pipeline sidebar is hidden (because it's just one agent)
 
-This workflow is used by all CodeMachine users to create workflows. It might be used once or many times, but it handles the same task in a repeatable, guided way.
+This workflow is used by all ClawTutor users to create workflows. It might be used once or many times, but it handles the same task in a repeatable, guided way.
 
 **The flow:**
 ```
@@ -1087,17 +1087,17 @@ Wait for response.
 "**How Specification Files Work:**
 
 1. **Before workflow starts:** User MUST fill the spec file - workflow won't start without it
-2. **Default location:** `./.codemachine/inputs/specification.md` (created when workflow runs)
+2. **Default location:** `./.clawtutor/inputs/specification.md` (created when workflow runs)
 3. **CLI override:** You can specify a different file when running:
    ```
-   codemachine --spec ./docs/my-requirements.md
+   clawtutor --spec ./docs/my-requirements.md
    ```
 
 **To use the spec content in your agents:**
 
 1. Register a placeholder in `config/placeholders.js`:
    ```javascript
-   specification: path.join('.codemachine', 'inputs', 'specification.md'),
+   specification: path.join('.clawtutor', 'inputs', 'specification.md'),
    ```
 
 2. Use `\{specification\}` anywhere in your agent prompts to inject the file content
@@ -1131,7 +1131,7 @@ Present summary of everything collected:
 
 **Name:** \{workflow_name\}
 **Description:** \{workflow_description\}
-**Location:** `~/.codemachine/imports/\{workflow_name\}-codemachine/`
+**Location:** `~/.clawtutor/imports/\{workflow_name\}-clawtutor/`
 
 **Files will be created:**
 - `templates/workflows/\{workflow_name\}.workflow.js`
@@ -1154,9 +1154,9 @@ Present summary of everything collected:
 
 **On User Confirmation:**
 
-1. **Create directory** (if needed): `.codemachine/workflow-plans/`
+1. **Create directory** (if needed): `.clawtutor/workflow-plans/`
 
-2. **Create the plan file** at `.codemachine/workflow-plans/\{workflow_name\}-plan.md`:
+2. **Create the plan file** at `.clawtutor/workflow-plans/\{workflow_name\}-plan.md`:
 
 ```markdown
 # Workflow Plan: \{workflow_name\}
@@ -1179,7 +1179,7 @@ Last Updated: \{ISO timestamp\}
   <step-02 completed="true" timestamp="\{ISO timestamp\}">
     <workflow-name>\{workflow_name\}</workflow-name>
     <workflow-description>\{workflow_description\}</workflow-description>
-    <workflow-location>~/.codemachine/imports/\{workflow_name\}-codemachine/</workflow-location>
+    <workflow-location>~/.clawtutor/imports/\{workflow_name\}-clawtutor/</workflow-location>
     <existing-workflows count="\{count\}">\{comma-separated list from registry\}</existing-workflows>
     <workflow-mode>
       <type>\{manual|continuous|hybrid|autonomous\}</type>
@@ -1221,7 +1221,7 @@ TodoWrite([
 ```
 
 4. **Confirm to user:**
-"✓ Workflow plan created at `.codemachine/workflow-plans/\{workflow_name\}-plan.md`
+"✓ Workflow plan created at `.clawtutor/workflow-plans/\{workflow_name\}-plan.md`
 
 Press **Enter** to proceed to the next step."
 

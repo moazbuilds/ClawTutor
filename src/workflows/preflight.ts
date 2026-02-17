@@ -97,12 +97,12 @@ export async function checkOnboardingRequired(options: { cwd?: string } = {}): P
  *
  * Path can be overridden via:
  * - CLI: --spec <path>
- * - Env: CODEMACHINE_SPEC_PATH
+ * - Env: CLAWTUTOR_SPEC_PATH
  */
 export async function checkSpecificationRequired(options: { cwd?: string } = {}): Promise<void> {
   const cwd = options.cwd ? path.resolve(options.cwd) : process.cwd();
   const cmRoot = resolveWorkspaceRoot(cwd);
-  const specificationPath = process.env.CODEMACHINE_SPEC_PATH
+  const specificationPath = process.env.CLAWTUTOR_SPEC_PATH
     || path.resolve(cwd, WORKSPACE_DIRNAME, 'inputs', 'specifications.md');
 
   // Ensure workspace structure exists

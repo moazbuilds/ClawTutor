@@ -13,7 +13,7 @@ Final step - complete the workflow:
 3. Verify all files exist - fix anything missing
 4. Educate user about running the workflow
 
-**🎯 GUIDE USER TO CORRECT STEP:** This is the final step. If user wants to go back and modify something from earlier steps (agents, prompts, workflow definition), guide them: "To modify that, you can delete `./.codemachine/template.json` to reset and reselect tracks/conditions, or we can make adjustments after generation is complete."
+**🎯 GUIDE USER TO CORRECT STEP:** This is the final step. If user wants to go back and modify something from earlier steps (agents, prompts, workflow definition), guide them: "To modify that, you can delete `./.clawtutor/template.json` to reset and reselect tracks/conditions, or we can make adjustments after generation is complete."
 
 ## Track-Based Behavior
 
@@ -596,8 +596,8 @@ Your workflow has a controller agent (\{controller.name\}). Press **Shift+Tab** 
 **To run your workflow:**
 
 Your new workflow **\{workflow_name\}** has been created. Here’s how to run it:
-- First, run `codemachine templates` and choose **\{workflow_name\}**.
-- Then, run `codemachine`, type `/start` and hit enter (return) to start the workflow.
+- First, run `clawtutor templates` and choose **\{workflow_name\}**.
+- Then, run `clawtutor`, type `/start` and hit enter (return) to start the workflow.
 
 **Congratulations! Your '\{workflow_name\}' workflow is ready to use.**"
 
@@ -605,7 +605,7 @@ Your new workflow **\{workflow_name\}** has been created. Here’s how to run it
 
 **On Completion:**
 
-1. **Read** the plan file at `.codemachine/workflow-plans/\{workflow_name\}-plan.md`
+1. **Read** the plan file at `.clawtutor/workflow-plans/\{workflow_name\}-plan.md`
 
 2. **Append step-05 XML** before the closing `</workflow-plan>` tag:
 
@@ -654,11 +654,11 @@ TodoWrite([
 ```
 
 5. **Confirm to user:**
-"✓ Workflow plan finalized at `.codemachine/workflow-plans/\{workflow_name\}-plan.md`
+"✓ Workflow plan finalized at `.clawtutor/workflow-plans/\{workflow_name\}-plan.md`
 
 **Your workflow is ready!**
 
-Run: `codemachine workflow \{workflow_name\}`"
+Run: `clawtutor workflow \{workflow_name\}`"
 
 {ali_step_completion}
 

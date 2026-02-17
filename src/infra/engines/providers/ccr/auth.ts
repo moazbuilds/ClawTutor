@@ -36,7 +36,7 @@ export function resolveCcrConfigDir(options?: CcrAuthOptions): string {
 
 /**
  * Gets the path to the .enable file
- * This simple marker file indicates CCR is enabled in codemachine
+ * This simple marker file indicates CCR is enabled in clawtutor
  */
 export function getCredentialsPath(configDir: string): string {
   return path.join(configDir, '.enable');
@@ -69,7 +69,7 @@ export async function isAuthenticated(options?: CcrAuthOptions): Promise<boolean
 
 /**
  * Ensures CCR is authenticated
- * Creates the .enable file to mark CCR as enabled in codemachine
+ * Creates the .enable file to mark CCR as enabled in clawtutor
  */
 export async function ensureAuth(options?: CcrAuthOptions): Promise<boolean> {
   const configDir = resolveCcrConfigDir(options);
@@ -105,13 +105,13 @@ export async function ensureAuth(options?: CcrAuthOptions): Promise<boolean> {
   console.log(`  1. Run: ccr ui`);
   console.log(`     Opens the web UI to add your providers\n`);
   console.log(`  2. Or manually edit: ~/.claude-code-router/config.json\n`);
-  console.log(`🚀 Easiest way to use CCR inside Codemachine:`);
+  console.log(`🚀 Easiest way to use CCR inside Clawtutor:`);
   console.log(`   Logout from all other engines using:`);
-  console.log(`     codemachine auth logout`);
+  console.log(`     clawtutor auth logout`);
   console.log(`   This will run CCR by default for all engines.\n`);
   console.log(`   Or modify the template by adding ccr engine.`);
   console.log(`   For full guide, check:`);
-  console.log(`   https://github.com/moazbuilds/CodeMachine-CLI/blob/main/docs/customizing-workflows.md\n`);
+  console.log(`   https://github.com/moazbuilds/ClawTutor-CLI/blob/main/docs/customizing-workflows.md\n`);
   console.log(`For more help, visit:`);
   console.log(`  https://github.com/musistudio/claude-code-router\n`);
   console.log(`────────────────────────────────────────────────────────────\n`);
@@ -121,7 +121,7 @@ export async function ensureAuth(options?: CcrAuthOptions): Promise<boolean> {
 
 /**
  * Clears all CCR authentication data
- * Removes the .enable file to disable CCR usage in codemachine
+ * Removes the .enable file to disable CCR usage in clawtutor
  */
 export async function clearAuth(options?: CcrAuthOptions): Promise<void> {
   const configDir = resolveCcrConfigDir(options);

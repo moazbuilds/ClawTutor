@@ -45,13 +45,13 @@ export async function handleLogin(providerId: string): Promise<void> {
       console.log(`  1. Run: ccr ui`);
       console.log(`     Opens the web UI to add your providers\n`);
       console.log(`  2. Or manually edit: ~/.claude-code-router/config.json\n`);
-      console.log(`🚀 Easiest way to use CCR inside Codemachine:`);
+      console.log(`🚀 Easiest way to use CCR inside Clawtutor:`);
       console.log(`   Logout from all other engines using:`);
-      console.log(`     codemachine auth logout`);
+      console.log(`     clawtutor auth logout`);
       console.log(`   This will run CCR by default for all engines.\n`);
       console.log(`   Or modify the template by adding ccr engine.`);
       console.log(`   For full guide, check:`);
-      console.log(`   https://github.com/moazbuilds/CodeMachine-CLI/blob/main/docs/customizing-workflows.md\n`);
+      console.log(`   https://github.com/moazbuilds/ClawTutor-CLI/blob/main/docs/customizing-workflows.md\n`);
       console.log(`For more help, visit:`);
       console.log(`  https://github.com/musistudio/claude-code-router\n`);
       console.log(`────────────────────────────────────────────────────────────\n`);
@@ -106,11 +106,11 @@ export async function handleLogin(providerId: string): Promise<void> {
         await engine.auth.ensureAuth(true);
         console.log(`\n${engine.metadata.name} authentication provider added successfully.`);
       } else {
-        console.log(`\nTo sign out and clear all data: codemachine auth logout`);
+        console.log(`\nTo sign out and clear all data: clawtutor auth logout`);
         console.log(`────────────────────────────────────────────────────────────\n`);
       }
     } else {
-      console.log(`Already authenticated with ${engine.metadata.name}. Use \`codemachine auth logout\` to sign out.`);
+      console.log(`Already authenticated with ${engine.metadata.name}. Use \`clawtutor auth logout\` to sign out.`);
     }
     return;
   }
@@ -136,7 +136,7 @@ export function registerAuthCommands(program: Command): void {
 
   authCommand
     .command('login')
-    .description('Authenticate with Codemachine services')
+    .description('Authenticate with Clawtutor services')
     .action(async () => {
       const provider = await selectAuthProvider();
       if (!provider) {
@@ -148,7 +148,7 @@ export function registerAuthCommands(program: Command): void {
 
   authCommand
     .command('logout')
-    .description('Log out of Codemachine services')
+    .description('Log out of Clawtutor services')
     .action(async () => {
       const provider = await selectAuthProvider();
       if (!provider) {

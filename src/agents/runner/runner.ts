@@ -303,7 +303,7 @@ export async function executeAgent(
       const engineName = selectedEngine?.metadata.name ?? engineType;
       console.error(`\n${engineName} authentication required`);
       console.error(`\nRun the following command to authenticate:\n`);
-      console.error(`  codemachine auth login\n`);
+      console.error(`  clawtutor auth login\n`);
       throw new Error(`${engineName} authentication required and no fallback engine available`);
     }
   }
@@ -420,7 +420,7 @@ export async function executeAgent(
         ...process.env,
         // Pass parent agent ID to child processes (for orchestration context)
         ...(monitoringAgentId !== undefined && {
-          CODEMACHINE_PARENT_AGENT_ID: monitoringAgentId.toString()
+          CLAWTUTOR_PARENT_AGENT_ID: monitoringAgentId.toString()
         })
       },
       onData: (chunk) => {

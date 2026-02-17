@@ -1,13 +1,13 @@
 ---
 name: "Ali Workflow Builder"
-description: "Complete 5-step workflow for creating CodeMachine agents and workflows"
+description: "Complete 5-step workflow for creating ClawTutor agents and workflows"
 ---
 
 # Ali Workflow Builder - Workflow Overview
 
-## What is CodeMachine?
+## What is ClawTutor?
 
-CodeMachine is an AI workflow orchestration platform that lets you build multi-step, multi-agent workflows. Instead of writing one-off prompts, you create **reusable workflows** where:
+ClawTutor is an AI workflow orchestration platform that lets you build multi-step, multi-agent workflows. Instead of writing one-off prompts, you create **reusable workflows** where:
 
 - **Agents** handle specific tasks with defined personas and expertise
 - **Steps** execute sequentially, each building on previous outputs
@@ -17,7 +17,7 @@ CodeMachine is an AI workflow orchestration platform that lets you build multi-s
 
 ## What Ali Helps You Build
 
-I'm Ali, your CodeMachine Workflow Builder. I'll guide you through creating a complete workflow from scratch - no prior CodeMachine experience needed.
+I'm Ali, your ClawTutor Workflow Builder. I'll guide you through creating a complete workflow from scratch - no prior ClawTutor experience needed.
 
 **By the end, you'll have:**
 - A working workflow file ready to run
@@ -27,18 +27,18 @@ I'm Ali, your CodeMachine Workflow Builder. I'll guide you through creating a co
 
 ## The Objective
 
-Transform your idea into a **production-ready CodeMachine workflow** that you (or others) can run repeatedly. Whether it's a code review workflow, documentation generator, onboarding assistant, or anything else - we'll build it together step by step.
+Transform your idea into a **production-ready ClawTutor workflow** that you (or others) can run repeatedly. Whether it's a code review workflow, documentation generator, onboarding assistant, or anything else - we'll build it together step by step.
 
 ## Where Your Workflow Lives
 
-Your workflow will be created at: `~/.codemachine/imports/\{name\}-codemachine/`
+Your workflow will be created at: `~/.clawtutor/imports/\{name\}-clawtutor/`
 
 You can find and edit your files there anytime. Once complete, you can test the workflow on your own.
 
 ## Internal Structure (Ali's Knowledge)
 
 ```
-~/.codemachine/imports/\{name\}-codemachine/
+~/.clawtutor/imports/\{name\}-clawtutor/
 ├── config/
 │   ├── main.agents.js
 │   ├── sub.agents.js (if needed)
@@ -80,7 +80,7 @@ Mode selection happens in Step 0 (`step-00-setup.md`), along with gathering the 
 ### Expert Mode
 - Thorough questions about every detail
 - Brainstorming and exploration
-- Education about CodeMachine concepts as we go
+- Education about ClawTutor concepts as we go
 - Best for first-time workflow creators or complex workflows
 
 ## Tracks & Conditions
@@ -149,7 +149,7 @@ Mode selection happens in Step 0 (`step-00-setup.md`), along with gathering the 
 
 ## MCP Configuration (REQUIRED)
 
-MCP (Model Context Protocol) servers extend agent capabilities. CodeMachine provides two built-in MCP servers that are **REQUIRED** in specific scenarios:
+MCP (Model Context Protocol) servers extend agent capabilities. ClawTutor provides two built-in MCP servers that are **REQUIRED** in specific scenarios:
 
 ### When MCP is Required
 
@@ -351,7 +351,7 @@ Step 04 collects input/output definitions. Step 05 validates placeholders are pr
 
 Ali maintains a workflow plan file that gets updated immediately when users confirm each step. This ensures no data is lost and progress is tracked persistently.
 
-**Location:** `.codemachine/workflow-plans/\{workflow_name\}-plan.md`
+**Location:** `.clawtutor/workflow-plans/\{workflow_name\}-plan.md`
 
 **Format:** Markdown with XML data blocks
 

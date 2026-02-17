@@ -1,7 +1,7 @@
 /**
  * OpenCode Engine
  *
- * Provides OpenCode CLI integration with CodeMachine's engine runtime.
+ * Provides OpenCode CLI integration with ClawTutor's engine runtime.
  */
 
 import type { EngineModule } from '../../core/base.js';

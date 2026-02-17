@@ -4,10 +4,10 @@ import { fileURLToPath } from 'node:url';
 import { appDebug } from '../logging/logger.js';
 
 let cachedPackageRoot: string | null = null;
-const VALID_PACKAGE_NAMES = new Set(['clawtutor', 'codemachine']);
+const VALID_PACKAGE_NAMES = new Set(['clawtutor', 'clawtutor']);
 
 /**
- * Validates that a directory contains a codemachine package.json.
+ * Validates that a directory contains a clawtutor package.json.
  */
 function validatePackageRoot(candidate: string | undefined): string | undefined {
   if (!candidate) return undefined;
@@ -24,13 +24,13 @@ function validatePackageRoot(candidate: string | undefined): string | undefined 
 }
 
 /**
- * Resolves the CodeMachine package root directory.
+ * Resolves the ClawTutor package root directory.
  *
  * Resolution order:
- * 1. Environment variables: CODEMACHINE_INSTALL_DIR (dev/source override), CODEMACHINE_PACKAGE_ROOT
+ * 1. Environment variables: CLAWTUTOR_INSTALL_DIR (dev/source override), CLAWTUTOR_PACKAGE_ROOT
  * 2. Traverse filesystem from the given module URL
  *
- * CODEMACHINE_INSTALL_DIR is checked first to allow overriding the resources
+ * CLAWTUTOR_INSTALL_DIR is checked first to allow overriding the resources
  * directory (set by embed.ts for compiled binaries) with the actual source repo.
  */
 export function resolvePackageRoot(moduleUrl: string, errorContext: string): string {
@@ -44,12 +44,12 @@ export function resolvePackageRoot(moduleUrl: string, errorContext: string): str
 
   // 1. Try environment variables first
   // INSTALL_DIR takes precedence to allow dev/source override of compiled resources
-  appDebug('[Root] CODEMACHINE_INSTALL_DIR: %s', process.env.CODEMACHINE_INSTALL_DIR ?? '(not set)');
-  appDebug('[Root] CODEMACHINE_PACKAGE_ROOT: %s', process.env.CODEMACHINE_PACKAGE_ROOT ?? '(not set)');
+  appDebug('[Root] CLAWTUTOR_INSTALL_DIR: %s', process.env.CLAWTUTOR_INSTALL_DIR ?? '(not set)');
+  appDebug('[Root] CLAWTUTOR_PACKAGE_ROOT: %s', process.env.CLAWTUTOR_PACKAGE_ROOT ?? '(not set)');
 
   const envCandidates = [
-    process.env.CODEMACHINE_INSTALL_DIR,
-    process.env.CODEMACHINE_PACKAGE_ROOT,
+    process.env.CLAWTUTOR_INSTALL_DIR,
+    process.env.CLAWTUTOR_PACKAGE_ROOT,
   ];
 
   for (const candidate of envCandidates) {
@@ -72,7 +72,7 @@ export function resolvePackageRoot(moduleUrl: string, errorContext: string): str
       appDebug('[Root] Resolved from filesystem traversal: %s (depth=%s)', validated, depth);
       cachedPackageRoot = validated;
       // Set env var for other modules (like MCP setup) that check it directly
-      process.env.CODEMACHINE_PACKAGE_ROOT ??= validated;
+      process.env.CLAWTUTOR_PACKAGE_ROOT ??= validated;
       return validated;
     }
 
@@ -89,7 +89,7 @@ export function resolvePackageRoot(moduleUrl: string, errorContext: string): str
 }
 
 /**
- * Resolves the path to the CodeMachine package.json file.
+ * Resolves the path to the ClawTutor package.json file.
  */
 export function resolvePackageJson(moduleUrl: string, errorContext: string): string {
   const root = resolvePackageRoot(moduleUrl, errorContext);

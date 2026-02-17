@@ -37,7 +37,7 @@ export interface StepContext {
   /** Working directory */
   cwd: string;
 
-  /** CodeMachine root directory */
+  /** ClawTutor root directory */
   cmRoot: string;
 
   /** Event emitter for UI updates */

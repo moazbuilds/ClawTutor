@@ -21,7 +21,7 @@ const tag =
   tagArgIndex !== -1 && args[tagArgIndex + 1]
     ? args[tagArgIndex + 1]
     : process.env.NPM_TAG ||
-      process.env.CODEMACHINE_TAG ||
+      process.env.CLAWTUTOR_TAG ||
       (process.env.GITHUB_REF_NAME?.startsWith('v') ? 'latest' : 'latest');
 
 const npmToken = process.env.NPM_TOKEN || process.env.NODE_AUTH_TOKEN || process.env.NPM_CONFIG_TOKEN;
@@ -89,7 +89,7 @@ for (const { name, dir } of platformPackages) {
   // Best-effort: make binary executable on Unix targets so npm keeps the bit.
   try {
     if (!name.includes('windows')) {
-      chmodSync(join(dir, 'codemachine'), 0o755);
+      chmodSync(join(dir, 'clawtutor'), 0o755);
     }
   } catch {
     // ignore chmod failures (e.g., cross-platform artifacts not present)
@@ -99,7 +99,7 @@ for (const { name, dir } of platformPackages) {
 // Smoke test the host binary (only for the current platform).
 const hostPkg = platformPackages.find(({ name }) => name.includes(hostKey.replace('win32', 'windows')));
 if (hostPkg) {
-  const binName = hostPkg.name.includes('windows') ? 'codemachine.exe' : 'codemachine';
+  const binName = hostPkg.name.includes('windows') ? 'clawtutor.exe' : 'clawtutor';
   const binPath = join(hostPkg.dir, binName);
   if (existsSync(binPath)) {
     try {

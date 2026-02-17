@@ -37,7 +37,7 @@ async function ensureEngineAuth(engineType: EngineType): Promise<void> {
   if (!isAuthed) {
     console.error(`\n${engine.metadata.name} authentication required`);
     console.error(`\nRun the following command to authenticate:\n`);
-    console.error(`  codemachine auth login\n`);
+    console.error(`  clawtutor auth login\n`);
     throw new Error(`${engine.metadata.name} authentication required`);
   }
 }

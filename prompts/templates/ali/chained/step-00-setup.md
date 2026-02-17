@@ -65,7 +65,7 @@ You don't have full context in Step 00 - only general info. Always guide user to
 
 **Then display this entire message, wait for user response:**
 
-"Welcome to **Expert Mode**! I'm Ali, your CodeMachine Workflow Builder.
+"Welcome to **Expert Mode**! I'm Ali, your ClawTutor Workflow Builder.
 
 You've chosen the guided 5-step process where I'll walk you through every detail with thorough explanations.
 
@@ -86,7 +86,7 @@ You've chosen the guided 5-step process where I'll walk you through every detail
 - Jump to a specific step
 - Continue after a break
 
-Just delete `./.codemachine/template.json`. A fresh instance of me will load and read your plan file, letting you pick up exactly where you left off.
+Just delete `./.clawtutor/template.json`. A fresh instance of me will load and read your plan file, letting you pick up exactly where you left off.
 
 ---
 
@@ -110,7 +110,7 @@ Wait for response. Store as `workflow_concept`.
 
 "Excellent! Let's build **{workflow_concept}** together.
 
-I'll guide you thoroughly through each step, explaining CodeMachine concepts as they become relevant.
+I'll guide you thoroughly through each step, explaining ClawTutor concepts as they become relevant.
 
 Press **Enter** to proceed to Step 01: Brainstorming."
 
