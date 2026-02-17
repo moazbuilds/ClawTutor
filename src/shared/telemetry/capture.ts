@@ -4,8 +4,6 @@ import type { EngineType } from '../../infra/engines/index.js';
 import { parseTelemetry as parseClaudeTelemetry } from '../../infra/engines/providers/claude/telemetryParser.js';
 import { parseTelemetry as parseCodexTelemetry } from '../../infra/engines/providers/codex/telemetryParser.js';
 import { parseTelemetry as parseOpenCodeTelemetry } from '../../infra/engines/providers/opencode/telemetryParser.js';
-import { parseTelemetry as parseCCRTelemetry } from '../../infra/engines/providers/ccr/telemetryParser.js';
-import { parseTelemetry as parseCursorTelemetry } from '../../infra/engines/providers/cursor/telemetryParser.js';
 
 interface CapturedTelemetry {
   duration?: number;
@@ -26,8 +24,6 @@ const telemetryParsers: Record<EngineType, TelemetryParser> = {
   claude: parseClaudeTelemetry,
   codex: parseCodexTelemetry,
   opencode: parseOpenCodeTelemetry,
-  ccr: parseCCRTelemetry,
-  cursor: parseCursorTelemetry,
 };
 
 export interface TelemetryCapture {
