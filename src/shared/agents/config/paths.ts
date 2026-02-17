@@ -1,9 +1,13 @@
 import { existsSync } from 'node:fs';
 import { join, resolve } from 'node:path';
 import { getAllInstalledImports } from '../../imports/index.js';
+import { LEGACY_WORKSPACE_DIRNAME, WORKSPACE_DIRNAME } from '../../utils/index.js';
 
 const AGENT_MODULE_FILENAMES = ['sub.agents.js', 'main.agents.js', 'modules.js', 'agents.js'];
-const AGENT_JSON_RELATIVE_PATH = join('.codemachine', 'agents', 'agents-config.json');
+const AGENT_JSON_RELATIVE_PATHS = [
+  join(WORKSPACE_DIRNAME, 'agents', 'agents-config.json'),
+  join(LEGACY_WORKSPACE_DIRNAME, 'agents', 'agents-config.json'),
+];
 
 export type AgentsModuleLookupOptions = {
   projectRoot?: string;
@@ -29,7 +33,9 @@ export function resolveAgentsModulePath(options: AgentsModuleLookupOptions = {})
 
   // Then check project root
   if (projectRoot) {
-    candidates.push(join(projectRoot, AGENT_JSON_RELATIVE_PATH));
+    for (const relPath of AGENT_JSON_RELATIVE_PATHS) {
+      candidates.push(join(projectRoot, relPath));
+    }
 
     for (const filename of AGENT_MODULE_FILENAMES) {
       candidates.push(join(projectRoot, 'config', filename));
@@ -67,9 +73,11 @@ export function getAllAgentsModulePaths(projectRoot?: string): string[] {
 
   // Then check project root
   if (resolvedRoot) {
-    const jsonPath = join(resolvedRoot, AGENT_JSON_RELATIVE_PATH);
-    if (existsSync(jsonPath)) {
-      paths.push(jsonPath);
+    for (const relPath of AGENT_JSON_RELATIVE_PATHS) {
+      const jsonPath = join(resolvedRoot, relPath);
+      if (existsSync(jsonPath)) {
+        paths.push(jsonPath);
+      }
     }
 
     for (const filename of AGENT_MODULE_FILENAMES) {
