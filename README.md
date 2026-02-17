@@ -29,7 +29,7 @@ Every time you use an AI coding agent, you're running a workflow. Fix a bug? You
 ClawTutor is an orchestration layer that runs AI coding CLIs through structured workflows. You define the workflow once, and ClawTutor handles execution, context passing, and agent coordination.
 
 
-It uses the headless scripting mode that AI coding engines provide for automation (Claude Code, Codex, Cursor, and others). It spawns engines via CLI, passes the right arguments and flags, and controls agents through its infrastructure.
+It uses the headless scripting mode that AI coding engines provide for automation (Claude Code, Codex, and OpenCode). It spawns engines via CLI, passes the right arguments and flags, and controls agents through its infrastructure.
 
 **Build workflows from fully interactive to fully autonomous - and anything in between. <a href="https://docs.clawtutor.co/core-concepts/workflow/orchestration-patterns" target="_blank">Learn about orchestration patterns →</a>**
 
