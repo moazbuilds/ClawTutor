@@ -26,7 +26,7 @@ export function useHomeCommands(options: UseHomeCommandsOptions) {
       return
     }
 
-    if (cmd === HOME_COMMANDS.EXIT || cmd === HOME_COMMANDS.QUIT) {
+    if (cmd === HOME_COMMANDS.EXIT) {
       handleExitCommand()
       return
     }

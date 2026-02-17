@@ -43,7 +43,6 @@ export function getAbsoluteSpecPath(): string {
 export const HOME_COMMANDS = {
   START: "/start",
   EXIT: "/exit",
-  QUIT: "/quit",
 } as const
 
 /**
