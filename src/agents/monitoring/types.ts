@@ -16,7 +16,7 @@ export interface AgentRecord {
   /** Agent name/type (e.g., 'frontend', 'backend', 'plan-creator') */
   name: string;
 
-  /** Engine type used for execution (e.g., 'claude', 'codex', 'cursor') */
+  /** Engine type used for execution (e.g., 'claude', 'codex', 'opencode') */
   engine?: EngineType;
 
   /** Current execution status */
@@ -52,7 +52,7 @@ export interface AgentRecord {
   /** Error message if status is 'failed' */
   error?: string;
 
-  /** Engine provider (e.g., 'anthropic', 'openai', 'cursor') */
+  /** Engine provider (e.g., 'anthropic', 'openai', 'opencode') */
   engineProvider?: string;
 
   /** Model name (e.g., 'claude-sonnet-4', 'gpt-4-turbo') */
