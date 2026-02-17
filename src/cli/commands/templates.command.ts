@@ -11,6 +11,7 @@ import { isModuleStep } from '../../workflows/templates/types.js';
 import { resolvePackageRoot } from '../../shared/runtime/root.js';
 import { getAllInstalledImports } from '../../shared/imports/index.js';
 import { registerImportedAgents, clearImportedAgents } from '../../workflows/utils/config.js';
+import { resolveWorkspaceRoot, WORKSPACE_DIRNAME } from '../../shared/utils/index.js';
 
 const packageRoot = resolvePackageRoot(import.meta.url, 'templates command');
 
@@ -30,7 +31,7 @@ export interface TemplateChoice extends SelectionChoice<string> {
 async function handleTemplateSelectionSuccess(template: WorkflowTemplate, templateFilePath: string): Promise<void> {
   const templateFileName = path.basename(templateFilePath);
   const cwd = process.env.CODEMACHINE_CWD || process.cwd();
-  const cmRoot = path.join(cwd, '.codemachine');
+  const cmRoot = resolveWorkspaceRoot(cwd);
   const agentsDir = path.join(cmRoot, 'agents');
 
   console.log(`\nSelected: ${template.name}`);
@@ -73,7 +74,7 @@ async function handleTemplateSelectionSuccess(template: WorkflowTemplate, templa
     console.log('\n✓ Template unchanged, agents folder up to date');
   }
 
-  console.log(`\n✅ Template saved to .codemachine/template.json`);
+  console.log(`\n✅ Template saved to ${WORKSPACE_DIRNAME}/template.json`);
 }
 
 export async function getAvailableTemplates(): Promise<TemplateChoice[]> {
