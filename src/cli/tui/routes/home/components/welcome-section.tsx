@@ -5,12 +5,10 @@
  * Displays logo, version info, and help commands.
  */
 
-import { For } from "solid-js"
 import { TextAttributes } from "@opentui/core"
 import { useTheme } from "@tui/shared/context/theme"
 import { Logo } from "@tui/shared/components/logo"
-import { HelpRow } from "./help-row"
-import { getVersion, COMMAND_HELP } from "../config/commands"
+import { getVersion } from "../config/commands"
 
 const SLOGANS = [
   "Deploying minions. Stand back.",
@@ -38,27 +36,22 @@ export function WelcomeSection() {
   const slogan = getRandomSlogan()
 
   return (
-    <>
+    <box flexDirection="column" alignItems="center">
       <Logo />
 
-      <box width={60} flexDirection="column" gap={0}>
-        <box flexDirection="row" gap={0} marginBottom={1}>
+      <box flexDirection="column" alignItems="center" gap={0}>
+        <box flexDirection="row" justifyContent="center" gap={0} marginBottom={1}>
           <text fg={themeCtx.theme.purple}>░▒▓ </text>
           <text fg={themeCtx.theme.text}>🦞 🦀 </text>
           <text fg={themeCtx.theme.text} attributes={TextAttributes.BOLD}>OpenClaw Training Grid-X9</text>
           <text fg={themeCtx.theme.purple}> ▓▒░  </text>
           <text fg={themeCtx.theme.textMuted}>v{getVersion()}</text>
         </box>
-        <For each={COMMAND_HELP}>
-          {(item) => (
-            <HelpRow command={item.command} description={item.description} />
-          )}
-        </For>
       </box>
 
       <box marginTop={1}>
         <text fg="cyan" attributes={TextAttributes.BOLD}>{slogan}</text>
       </box>
-    </>
+    </box>
   )
 }
