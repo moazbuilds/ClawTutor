@@ -38,9 +38,11 @@ function shouldApplyDefault(key: string, overrides?: NodeJS.ProcessEnv): boolean
 function resolveRunnerEnv(env?: NodeJS.ProcessEnv): NodeJS.ProcessEnv {
   const runnerEnv: NodeJS.ProcessEnv = { ...process.env, ...(env ?? {}) };
 
-  // Set all three XDG environment variables to subdirectories under OPENCODE_HOME
-  // This centralizes all OpenCode data under ~/.clawtutor/opencode by default
+  // Only force XDG paths when CLAWTUTOR_OPENCODE_HOME override is configured.
   const opencodeHome = resolveOpenCodeHome(runnerEnv[ENV.OPENCODE_HOME]);
+  if (!opencodeHome) {
+    return runnerEnv;
+  }
 
   if (shouldApplyDefault('XDG_CONFIG_HOME', env)) {
     runnerEnv.XDG_CONFIG_HOME = path.join(opencodeHome, 'config');
