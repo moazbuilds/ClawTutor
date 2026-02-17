@@ -1220,7 +1220,7 @@ module.exports = [
     conditions: ['condition-id'],              // Agent only runs if condition selected
 
     // Optional: Engine configuration
-    engine: 'claude',                          // 'claude' | 'codex' | 'ccr' | 'opencode' | 'auggie' | 'mistral' | 'cursor'
+    engine: 'claude',                          // 'claude' | 'codex' | 'opencode'
     model: 'opus',                             // Model name (engine-specific)
     modelReasoningEffort: 'medium',            // 'low' | 'medium' | 'high' (codex only)
 
