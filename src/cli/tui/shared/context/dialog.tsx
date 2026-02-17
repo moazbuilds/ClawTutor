@@ -80,7 +80,7 @@ export function DialogProvider(props: ParentProps) {
         await command()
 
         // Show completion message
-        console.log(`\n✓ Complete!\nReturning to CodeMachine...\n`)
+        console.log(`\n✓ Complete!\nReturning to ClawTutor...\n`)
         await new Promise((resolve) => setTimeout(resolve, 1500))
 
         // Resume TUI session
@@ -138,7 +138,7 @@ export function DialogProvider(props: ParentProps) {
         await command()
 
         // Show completion message
-        console.log(`\n✓ Complete!\nRestarting CodeMachine...\n`)
+        console.log(`\n✓ Complete!\nRestarting ClawTutor...\n`)
         await new Promise((resolve) => setTimeout(resolve, 1000))
 
         // Clear again before restart
