@@ -17,7 +17,7 @@ export interface ClaudeConfig {
 
   /**
    * Optional custom Claude config directory
-   * Defaults to ~/.clawtutor/claude
+   * Defaults to ~/.claude
    */
   claudeConfigDir?: string;
 }
