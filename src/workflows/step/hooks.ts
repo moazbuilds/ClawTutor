@@ -80,7 +80,7 @@ export function beforeRun(options: BeforeRunOptions): BeforeRunResult {
 
   // Reset directive file (only for fresh start)
   if (!isResume) {
-    const directiveFile = path.join(ctx.cwd, '.codemachine/memory/directive.json');
+    const directiveFile = path.join(ctx.cmRoot, 'memory', 'directive.json');
     const directiveDir = path.dirname(directiveFile);
     if (!fs.existsSync(directiveDir)) {
       fs.mkdirSync(directiveDir, { recursive: true });
