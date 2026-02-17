@@ -96,7 +96,7 @@ if (process.stdout.isTTY && !shouldSkipSplash) {
   const centerX = Math.floor(columns / 2);
   process.stdout.write('\x1b[2J\x1b[H\x1b[?25l'); // Clear, home, hide cursor
   process.stdout.write(`\x1b[${centerY};${centerX - 6}H`);
-  process.stdout.write('\x1b[38;2;224;230;240mCode\x1b[1mMachine\x1b[0m');
+  process.stdout.write('\x1b[38;2;224;230;240mClaw\x1b[1mTutor\x1b[0m');
   process.stdout.write(`\x1b[${centerY + 1};${centerX - 6}H`);
   process.stdout.write('\x1b[38;2;0;217;255m━━━━━━━━━━━━\x1b[0m');
   appDebug('[Boot] Splash screen displayed');
