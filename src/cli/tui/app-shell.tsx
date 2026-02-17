@@ -386,7 +386,7 @@ export function App(props: { initialToast?: InitialToast }) {
           <box flexDirection="row" justifyContent="space-between" paddingLeft={1} paddingRight={1}>
             <box flexDirection="row" gap={1}>
               <box paddingLeft={1} paddingRight={1} backgroundColor={themeCtx.theme.backgroundElement}>
-                <text fg={themeCtx.theme.text}>Code<span style={{ bold: true }}>Machine</span></text>
+                <text fg={themeCtx.theme.text}>Claw<span style={{ bold: true }}>Tutor</span></text>
               </box>
               <text fg={themeCtx.theme.textMuted}>v{getVersion()}</text>
               <Show when={updateNotifier.updateAvailable}>
