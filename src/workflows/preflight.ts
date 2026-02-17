@@ -14,6 +14,7 @@ import { ensureWorkspaceStructure } from '../runtime/services/workspace/index.js
 import type { AgentDefinition } from '../shared/agents/config/types.js';
 import { registerImportedAgents, clearImportedAgents } from './utils/config.js';
 import { getAllInstalledImports } from '../shared/imports/index.js';
+import { resolveWorkspaceRoot, WORKSPACE_DIRNAME } from '../shared/utils/index.js';
 
 export { ValidationError } from '../runtime/services/index.js';
 
@@ -50,7 +51,7 @@ export interface OnboardingNeeds {
  */
 export async function checkOnboardingRequired(options: { cwd?: string } = {}): Promise<OnboardingNeeds> {
   const cwd = options.cwd ? path.resolve(options.cwd) : process.cwd();
-  const cmRoot = path.join(cwd, '.codemachine');
+  const cmRoot = resolveWorkspaceRoot(cwd);
 
   // Ensure workspace structure exists
   await ensureWorkspaceStructure({ cwd });
@@ -100,9 +101,9 @@ export async function checkOnboardingRequired(options: { cwd?: string } = {}): P
  */
 export async function checkSpecificationRequired(options: { cwd?: string } = {}): Promise<void> {
   const cwd = options.cwd ? path.resolve(options.cwd) : process.cwd();
-  const cmRoot = path.join(cwd, '.codemachine');
+  const cmRoot = resolveWorkspaceRoot(cwd);
   const specificationPath = process.env.CODEMACHINE_SPEC_PATH
-    || path.resolve(cwd, '.codemachine', 'inputs', 'specifications.md');
+    || path.resolve(cwd, WORKSPACE_DIRNAME, 'inputs', 'specifications.md');
 
   // Ensure workspace structure exists
   await ensureWorkspaceStructure({ cwd });
