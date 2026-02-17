@@ -9,7 +9,7 @@ import { OpenTUIAdapter } from "../adapters/opentui"
 import { loadControllerConfig } from "../../../../../workflows/controller/config.js"
 import { AgentMonitorService } from "../../../../../agents/monitoring/index.js"
 import { debug } from "../../../../../shared/logging/logger.js"
-import path from "path"
+import { resolveWorkspaceRoot } from "../../../../../shared/utils/index.js"
 import type { WorkflowEventBus } from "../../../../../workflows/events/index.js"
 import type { UIActions, AutonomousMode } from "../context/ui-state/types"
 
@@ -71,7 +71,7 @@ export function useWorkflowEvents(options: UseWorkflowEventsOptions): UseWorkflo
 
     // Load initial controller state from persisted config
     // This ensures controllerState is available on restart/resume (when controller:info event won't be re-emitted)
-    const cmRoot = path.join(resolvePath(currentDir), '.codemachine')
+    const cmRoot = resolveWorkspaceRoot(resolvePath(currentDir))
     debug('onMount - loading controller config from: %s', cmRoot)
     const controllerState = await loadControllerConfig(cmRoot)
     debug('onMount - controllerState: %s', JSON.stringify(controllerState))
