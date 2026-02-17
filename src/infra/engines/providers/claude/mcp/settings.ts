@@ -30,7 +30,7 @@ export interface ClaudeSettings {
  *
  * Claude reads MCP configuration from:
  * - Project scope: .mcp.json in project directory
- * - User scope: .claude.json in CLAUDE_CONFIG_DIR (defaults to ~/.clawtutor/claude)
+ * - User scope: .claude.json in CLAUDE_CONFIG_DIR (defaults to ~/.claude)
  *
  * @param scope - 'project' for .mcp.json, 'user' for .claude.json
  * @param projectDir - Project directory (required for 'project' scope)
@@ -45,7 +45,7 @@ export function getSettingsPath(scope: ConfigScope, projectDir?: string): string
   // User scope: Claude reads from .claude.json in CLAUDE_CONFIG_DIR
   const claudeConfigDir = process.env.CLAUDE_CONFIG_DIR
     ? process.env.CLAUDE_CONFIG_DIR
-    : path.join(homedir(), '.clawtutor', 'claude');
+    : path.join(homedir(), '.claude');
   return path.join(claudeConfigDir, '.claude.json');
 }
 
