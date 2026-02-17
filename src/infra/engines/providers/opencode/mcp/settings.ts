@@ -10,7 +10,7 @@ import * as path from 'path';
 import { debug } from '../../../../../shared/logging/logger.js';
 import type { ConfigScope } from '../../../../mcp/types.js';
 import { getRouterConfig, ROUTER_ID } from '../../../../mcp/router/config.js';
-import { resolveOpenCodeHome } from '../auth.js';
+import { resolveOpenCodeConfigDir } from '../auth.js';
 
 // Re-export router ID
 export { ROUTER_ID };
@@ -51,9 +51,7 @@ export function getSettingsPath(scope: ConfigScope, projectDir?: string): string
     return path.join(projectDir, 'opencode.json');
   }
   return path.join(
-    resolveOpenCodeHome(),
-    'config',
-    'opencode',
+    resolveOpenCodeConfigDir(),
     'opencode.json'
   );
 }

@@ -53,7 +53,7 @@ function resolveOpenCodeDataDir(): string {
 function resolveOpenCodeConfigDir(): string {
   const opencodeHome = resolveOpenCodeHome();
   if (opencodeHome) {
-    return path.join(opencodeHome, 'config');
+    return path.join(opencodeHome, 'config', 'opencode');
   }
 
   const xdgConfig = process.env.XDG_CONFIG_HOME
