@@ -118,11 +118,6 @@ const DEFAULT_SPEC_PATH = `${WORKSPACE_DIRNAME}/inputs/specifications.md`;
  * Note: workspace folder initialization is handled by workflow run, not here
  */
 async function initializeInBackground(cwd: string): Promise<void> {
-  // Check for updates (writes to ~/.clawtutor/resources/updates.json)
-  appDebug('[Init] Checking for updates');
-  const { check } = await import('../shared/updates/index.js');
-  check().catch(err => appDebug('[Init] Update check error: %s', err));
-
   const cmRoot = resolveWorkspaceRoot(cwd);
 
   // Only bootstrap if workspace doesn't exist
