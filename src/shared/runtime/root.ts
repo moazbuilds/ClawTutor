@@ -4,6 +4,7 @@ import { fileURLToPath } from 'node:url';
 import { appDebug } from '../logging/logger.js';
 
 let cachedPackageRoot: string | null = null;
+const VALID_PACKAGE_NAMES = new Set(['clawtutor', 'codemachine']);
 
 /**
  * Validates that a directory contains a codemachine package.json.
@@ -16,7 +17,7 @@ function validatePackageRoot(candidate: string | undefined): string | undefined 
 
   try {
     const pkg = JSON.parse(readFileSync(pkgPath, 'utf8'));
-    return pkg?.name === 'codemachine' ? candidate : undefined;
+    return VALID_PACKAGE_NAMES.has(pkg?.name) ? candidate : undefined;
   } catch {
     return undefined;
   }
