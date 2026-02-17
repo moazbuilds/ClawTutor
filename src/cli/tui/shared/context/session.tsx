@@ -4,6 +4,7 @@ import { createSimpleContext } from "./helper"
 import { getActiveTemplate } from "../../../../shared/workflows/template.js"
 import { onMount } from "solid-js"
 import * as path from "node:path"
+import { resolveWorkspaceRoot } from "../../../../shared/utils/index.js"
 
 export const { use: useSession, provider: SessionProvider } = createSimpleContext({
   name: "Session",
@@ -14,10 +15,10 @@ export const { use: useSession, provider: SessionProvider } = createSimpleContex
       lastRun: null as Date | null,
     })
 
-    // Load active template from .codemachine/template.json
+    // Load active template from workspace template.json
     onMount(async () => {
       const cwd = process.env.CODEMACHINE_CWD || process.cwd()
-      const cmRoot = path.join(cwd, ".codemachine")
+      const cmRoot = resolveWorkspaceRoot(cwd)
       const activeTemplate = await getActiveTemplate(cmRoot)
 
       if (activeTemplate) {
