@@ -18,6 +18,7 @@ const INJECTED_VERSION: string | undefined =
     : undefined;
 
 let cachedVersion: string | null = null;
+const VALID_PACKAGE_NAMES = new Set(['clawtutor', 'codemachine']);
 
 function getVersionFromPackageJson(): string {
   try {
@@ -49,7 +50,7 @@ function getVersionFromPackageJson(): string {
       const pkgPath = join(currentDir, 'package.json');
       try {
         const pkg = JSON.parse(readFileSync(pkgPath, 'utf8'));
-        if (pkg?.name === 'codemachine' && pkg?.version) {
+        if (VALID_PACKAGE_NAMES.has(pkg?.name) && pkg?.version) {
           return pkg.version;
         }
       } catch {
