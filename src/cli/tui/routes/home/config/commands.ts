@@ -49,6 +49,4 @@ export const HOME_COMMANDS = {
  * Command definitions for help display
  */
 export const COMMAND_HELP = [
-  { command: "start", description: "Start workflow with current template" },
-  { command: "exit", description: "Close the app" },
 ] as const
