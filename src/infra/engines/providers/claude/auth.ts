@@ -30,8 +30,12 @@ export function resolveClaudeConfigDir(options?: ClaudeAuthOptions): string {
     return expandHomeDir(process.env[ENV.CLAUDE_HOME]!);
   }
 
-  // Authentication is shared globally
-  return path.join(homedir(), '.clawtutor', 'claude');
+  if (process.env.CLAUDE_CONFIG_DIR) {
+    return expandHomeDir(process.env.CLAUDE_CONFIG_DIR);
+  }
+
+  // Fall back to Claude Code's native default config location.
+  return path.join(homedir(), '.claude');
 }
 
 /**
