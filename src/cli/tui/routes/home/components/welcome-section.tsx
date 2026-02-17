@@ -39,7 +39,7 @@ export function WelcomeSection() {
     <box flexDirection="column" alignItems="center">
       <Logo />
 
-      <box flexDirection="column" alignItems="center" gap={0}>
+      <box flexDirection="column" alignItems="center" gap={0} marginTop={1}>
         <box flexDirection="row" justifyContent="center" gap={0} marginBottom={1}>
           <text fg={themeCtx.theme.purple}>░▒▓ </text>
           <text fg={themeCtx.theme.text}>🦞 🦀 </text>
