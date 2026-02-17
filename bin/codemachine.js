@@ -21,6 +21,7 @@ import { fileURLToPath } from 'node:url';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const ROOT_FALLBACK = join(__dirname, '..');
+const VALID_PACKAGE_NAMES = new Set(['clawtutor', 'codemachine']);
 
 function findPackageRoot(startDir) {
   let current = startDir;
@@ -32,7 +33,7 @@ function findPackageRoot(startDir) {
     if (existsSync(candidate)) {
       try {
         const pkg = JSON.parse(readFileSync(candidate, 'utf8'));
-        if (pkg?.name === 'codemachine') {
+        if (VALID_PACKAGE_NAMES.has(pkg?.name)) {
           return current;
         }
       } catch {
