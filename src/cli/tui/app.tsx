@@ -13,7 +13,6 @@ import { ToastProvider } from "@tui/shared/context/toast"
 import { ThemeProvider } from "@tui/shared/context/theme"
 import { DialogProvider } from "@tui/shared/context/dialog"
 import { SessionProvider } from "@tui/shared/context/session"
-import { UpdateNotifierProvider } from "@tui/shared/context/update-notifier"
 import { initTUILogger, closeTUILogger } from "@tui/shared/utils/tui-logger"
 import { getSavedTheme, getTerminalBackgroundColor } from "./utils"
 import { App, currentView } from "./app-shell"
@@ -37,9 +36,7 @@ function Root(props: { mode: "dark" | "light"; initialToast?: InitialToast; onEx
           <ThemeProvider mode={props.mode}>
             <DialogProvider>
               <SessionProvider>
-                <UpdateNotifierProvider>
-                  <App initialToast={props.initialToast} />
-                </UpdateNotifierProvider>
+                <App initialToast={props.initialToast} />
               </SessionProvider>
             </DialogProvider>
           </ThemeProvider>
