@@ -1041,11 +1041,7 @@ Which AI engine should this agent use?
 |----|------|---------------|--------|
 | `claude` | Claude Code | opus | Stable - Best tested |
 | `codex` | Codex | gpt-5.2-codex | Stable - Fastest |
-| `ccr` | Claude Code Router | sonnet | Stable (needs config) |
 | `opencode` | OpenCode | opencode/glm-4.7-free | Stable (free fallback) |
-| `auggie` | Auggie CLI | (provider default) | Unstable |
-| `mistral` | Mistral Vibe | devstral-2 | Unstable |
-| `cursor` | Cursor | auto | Experimental |
 
 **Fallback:** If no engine set or not authenticated, falls back to `opencode` free plan.
 
@@ -1064,11 +1060,7 @@ Wait for response.
 |--------|---------|
 | `claude` | **Best tested** - consistently great results with opus. Highly recommended. |
 | `codex` | **Fastest** for quick answers. Only engine with reasoning effort control. |
-| `ccr` | Powerful but **needs configuration**. Read official repo docs first. |
-| `auggie` | **Not fully tested** - closed source. |
-| `mistral` | **Very unstable** in practice. Not recommended. |
 | `opencode` | **Slow** compared to others. Works as free fallback. |
-| `cursor` | **Experimental** - still being evaluated. |
 
 Now enter engine ID:"
 
@@ -1686,7 +1678,7 @@ module.exports = [
       <failure-indicators>\{warning signs that indicate failure or need to retry\}</failure-indicators>
 
       <!-- Engine Configuration -->
-      <engine>\{claude|codex|ccr|opencode|auggie|mistral|cursor\}</engine>
+      <engine>\{claude|codex|opencode\}</engine>
       <model>\{model or null if using default\}</model>
       <model-reasoning-effort>\{low|medium|high\}</model-reasoning-effort> <!-- Only for codex -->
 
