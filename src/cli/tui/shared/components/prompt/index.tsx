@@ -156,7 +156,7 @@ export function Prompt(props: PromptProps) {
           <input
             ref={(r) => (inputRef = r)}
             value={input()}
-            placeholder={props.disabled ? "Dialog open..." : (props.placeholder || "Type a command")}
+            placeholder={props.disabled ? "Dialog open..." : (props.placeholder || "Type /start")}
             placeholderColor={themeCtx.theme.textMuted}
             onInput={handleInput}
             onKeyDown={handleKeyDown}
