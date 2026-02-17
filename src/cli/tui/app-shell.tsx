@@ -13,7 +13,6 @@ import { useToast } from "@tui/shared/context/toast"
 import { Toast } from "@tui/shared/ui/toast"
 import { useTheme } from "@tui/shared/context/theme"
 import { useSession } from "@tui/shared/context/session"
-import { useUpdateNotifier } from "@tui/shared/context/update-notifier"
 import { Home } from "@tui/routes/home"
 import { Workflow } from "@tui/routes/workflow"
 import { Onboard } from "@tui/routes/onboard"
@@ -107,7 +106,6 @@ export function App(props: { initialToast?: InitialToast }) {
   const dimensions = useTerminalDimensions()
   const themeCtx = useTheme()
   const session = useSession()
-  const updateNotifier = useUpdateNotifier()
   const renderer = useRenderer()
   const toast = useToast()
   const kv = useKV()
@@ -390,9 +388,6 @@ export function App(props: { initialToast?: InitialToast }) {
                 <text fg={themeCtx.theme.text}>Claw<span style={{ bold: true }}>Tutor</span></text>
               </box>
               <text fg={themeCtx.theme.textMuted}>v{getVersion()}</text>
-              <Show when={updateNotifier.updateAvailable}>
-                <text fg={themeCtx.theme.warning}>Update: v{String(updateNotifier.latestVersion)}</text>
-              </Show>
               <text fg={themeCtx.theme.textMuted}>{cwd()}</text>
             </box>
             <box flexDirection="row">
