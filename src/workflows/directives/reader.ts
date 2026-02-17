@@ -8,9 +8,7 @@
 import * as fs from 'node:fs';
 import * as path from 'node:path';
 import type { DirectiveAction } from './types.js';
-
-/** Path to directive.json relative to project root */
-const DIRECTIVE_FILE_PATH = '.codemachine/memory/directive.json';
+import { resolveWorkspaceRoot } from '../../shared/utils/index.js';
 
 /**
  * Resets the directive.json file to { action: 'continue' }.
@@ -20,7 +18,7 @@ const DIRECTIVE_FILE_PATH = '.codemachine/memory/directive.json';
  * @param cwd - Project working directory
  */
 export async function resetDirective(cwd: string): Promise<void> {
-  const directiveFile = path.join(cwd, DIRECTIVE_FILE_PATH);
+  const directiveFile = path.join(resolveWorkspaceRoot(cwd), 'memory', 'directive.json');
   const directiveDir = path.dirname(directiveFile);
 
   try {
@@ -46,7 +44,7 @@ export async function resetDirective(cwd: string): Promise<void> {
  * @returns Parsed DirectiveAction or null if file doesn't exist/invalid
  */
 export async function readDirectiveFile(cwd: string): Promise<DirectiveAction | null> {
-  const directiveFile = path.join(cwd, DIRECTIVE_FILE_PATH);
+  const directiveFile = path.join(resolveWorkspaceRoot(cwd), 'memory', 'directive.json');
 
   try {
     const content = await fs.promises.readFile(directiveFile, 'utf8');
