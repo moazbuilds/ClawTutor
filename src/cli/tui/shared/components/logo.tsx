@@ -20,7 +20,7 @@ const CODE_TEXT_FRAMES = [
     '   ██████╗██╗      █████╗ ██╗    ██╗',
     '  ██╔════╝██║     ██╔══██╗██║    ██║',
     '  ██║     ██║     ███████║██║ █╗ ██║',
-    '  ██║     ██║     ██╔══██║██║↓██╗██║',
+    '  ██║     ██║     ██╔══██║██║ ██╗██║',
     '  ╚██████╗███████╗██║  ██║╚███╔███╔╝',
     '   ╚═════╝╚══════╝╚═╝  ╚═╝ ╚══╝╚══╝ ',
   ],
@@ -42,7 +42,6 @@ const MACHINE_TEXT = [
   '     ██║   ██║   ██║   ██║   ██║   ██║██╔══██╗',
   '     ██║   ╚██████╔╝   ██║   ╚██████╔╝██║  ██║',
   '     ╚═╝    ╚═════╝    ╚═╝    ╚═════╝ ╚═╝  ╚═╝',
-  '     >->__                  >>----------------------->    '
 ]
 
 export const SIMPLE_LOGO = [
@@ -148,11 +147,6 @@ export function Logo() {
                   </box>
                 )}
               </For>
-              {/* Render the arrow line (7th line of MACHINE_TEXT) */}
-              <box flexDirection="row" gap={2}>
-                <box width={CODE_TEXT()[0].length} />
-                <ColoredLine line={MACHINE_TEXT[6]} blockColor={() => themeCtx.theme.primary} borderColor={() => themeCtx.theme.purple} bold />
-              </box>
             </>
           }
         >
