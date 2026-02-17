@@ -42,12 +42,6 @@ export function getAbsoluteSpecPath(): string {
  */
 export const HOME_COMMANDS = {
   START: "/start",
-  TEMPLATES: "/templates",
-  TEMPLATE: "/template",
-  LOGIN: "/login",
-  LOGOUT: "/logout",
-  IMPORT: "/import",
-  EXPORT: "/export",
   EXIT: "/exit",
   QUIT: "/quit",
 } as const
@@ -57,6 +51,5 @@ export const HOME_COMMANDS = {
  */
 export const COMMAND_HELP = [
   { command: "start", description: "Start workflow with current template" },
-  { command: "templates", description: "Select and configure workflow templates" },
-  { command: "login", description: "Authenticate with AI providers" },
+  { command: "exit", description: "Close the app" },
 ] as const
