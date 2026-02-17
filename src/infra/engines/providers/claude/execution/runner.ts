@@ -184,7 +184,9 @@ export async function runClaude(options: RunClaudeOptions): Promise<RunClaudeRes
   // Set up CLAUDE_CONFIG_DIR for authentication
   const claudeConfigDir = process.env[ENV.CLAUDE_HOME]
     ? expandHomeDir(process.env[ENV.CLAUDE_HOME]!)
-    : path.join(homedir(), '.clawtutor', 'claude');
+    : process.env.CLAUDE_CONFIG_DIR
+      ? expandHomeDir(process.env.CLAUDE_CONFIG_DIR)
+      : path.join(homedir(), '.claude');
 
   const mergedEnv: NodeJS.ProcessEnv = {
     ...process.env,
